@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Liko | 福岡市西区・姪浜のヨガ＆ベビーサイン教室</title>
+  <meta name="description" content="福岡市西区・姪浜のヨガ＆ベビーサイン教室。少人数制・床暖房・月齢別ベビーサイン。日本ベビーサイン協会認定マスター講師による指導。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --olive:      #6b8f71;
+      --olive-dark: #4a6b50;
+      --olive-tint: #eef4ee;
+      --olive-soft: #e8f0e9;
+
+      --bs:         #d8be62;
+      --bs-deep:    #ab8d33;
+      --bs-soft:    #f5ecc8;
+      --bs-tint:    #fbf5dc;
+
+      --paper:      #fbf8f1;
+      --paper-2:    #f4efe2;
+
+      --ink:        #1f1d18;
+      --ink-soft:   #4a4641;
+      --ink-mute:   #8a857c;
+
+      --line:       #e5dfd0;
+      --line-dark:  #d4cdb9;
+
+      --serif:  "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --sans:   "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+      --italic: "Cormorant Garamond", serif;
+      --mono:   "JetBrains Mono", ui-monospace, monospace;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.8; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── ヘッダー ── */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(251,248,241,.96); backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      transition: transform .3s;
+    }
+    .header.hidden { transform: translateY(-100%); }
+    .header-inner {
+      max-width: 1080px; margin: 0 auto;
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--italic); font-style: italic;
+      font-weight: 500; font-size: 1.3rem; line-height: 1.1; letter-spacing: .01em;
+    }
+    .logo small {
+      display: block; font-family: var(--mono); font-style: normal;
+      font-size: .56rem; letter-spacing: .2em; color: var(--ink-mute); margin-top: 3px;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 1.2px; background: var(--ink); transition: all .3s; }
+    .nav ul { display: flex; gap: 22px; list-style: none; align-items: center; }
+    .nav a { font-size: .8rem; letter-spacing: .04em; }
+    .nav a:hover { color: var(--olive); }
+    .btn-nav {
+      background: var(--olive); color: var(--paper) !important;
+      padding: 8px 18px; border-radius: 999px; font-size: .78rem;
+    }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 190; }
+
+    /* ── FV ── */
+    .fv { position: relative; height: 100vh; height: 100dvh; }
+    .fv-slide {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity 1.4s ease;
+    }
+    .fv-slide.active { opacity: 1; }
+    .fv-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+    }
+    .fv-slide:first-child .fv-img { object-position: 47% center; }
+    .fv-slide:nth-child(2) .fv-img { object-position: 35% center; }
+    .fv-overlay {
+      position: absolute; inset: 0;
+      background: rgba(40,35,20,.26);
+    }
+    .fv-content {
+      position: relative; z-index: 2;
+      height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 100px 28px 220px;
+      color: var(--paper);
+    }
+    .fv-tagline {
+      font-family: var(--serif); font-weight: 600;
+      font-size: clamp(1.6rem, 6vw, 2.8rem);
+      line-height: 1.5; letter-spacing: .06em;
+      text-shadow: 0 2px 24px rgba(0,0,0,.35);
+    }
+    .fv-rule { width: 32px; height: 1px; background: var(--paper); margin: 20px 0; opacity: .7; }
+    .fv-title {
+      font-family: var(--serif); font-weight: 500;
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      line-height: 1.75; letter-spacing: .08em; opacity: .85;
+      text-shadow: 0 2px 18px rgba(0,0,0,.35);
+    }
+    .fv-place {
+      margin-top: 18px; font-family: var(--mono);
+      font-size: .62rem; letter-spacing: .25em; opacity: .85;
+    }
+    /* FV 飛び出しカード */
+    .fv-cards-wrap {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
+      padding: 0 14px; transform: translateY(50%);
+    }
+    .fv-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .fv-card {
+      background: var(--paper); border-top: 3px solid var(--olive);
+      box-shadow: 0 8px 28px rgba(31,29,24,.12);
+      overflow: hidden; display: flex; flex-direction: column;
+      text-decoration: none; color: var(--ink);
+      transition: transform .2s;
+    }
+    .fv-card.bs { border-top-color: var(--bs-deep); }
+    .fv-card:active { transform: translateY(2px); }
+    .fv-card-body { padding: 18px 14px 16px; flex: 1; min-height: 110px; }
+    .fv-card-en {
+      font-family: var(--mono); font-size: .54rem; letter-spacing: .22em;
+      color: var(--olive); margin-bottom: 8px;
+    }
+    .fv-card.bs .fv-card-en { color: var(--bs-deep); }
+    .fv-card-title {
+      font-family: var(--serif); font-size: .92rem;
+      font-weight: 500; line-height: 1.4; margin-bottom: 6px; letter-spacing: .02em;
+    }
+    .fv-card-sub { font-family: var(--mono); font-size: .58rem; color: var(--ink-mute); letter-spacing: .04em; }
+    .fv-card-footer {
+      padding: 11px 14px; font-size: .7rem; letter-spacing: .12em; font-weight: 500;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .fv-card.yoga-card .fv-card-footer { background: var(--olive); color: var(--paper); }
+    .fv-card.bs .fv-card-footer { background: var(--bs); color: var(--olive-dark); }
+
+    /* ── 共通 ── */
+    .section { padding: 64px 0; }
+    .section.bg-warm { background: var(--paper-2); }
+    .section.bg-white { background: #fff; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+    .eyebrow {
+      font-family: var(--mono); font-size: .6rem; letter-spacing: .3em;
+      color: var(--olive); text-transform: uppercase; margin-bottom: 10px;
+    }
+    .sec-title {
+      font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 500; line-height: 1.7; margin-bottom: 10px; letter-spacing: .04em;
+    }
+    .sec-lead { font-size: .88rem; color: var(--ink-soft); line-height: 2.1; }
+    .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+    .rule-line { width: 28px; height: 1px; background: var(--olive); margin-top: 4px; }
+    .secthead { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+    .secthead.center { align-items: center; text-align: center; }
+    .secthead.center .rule-line { margin: 0 auto; }
+
+    .chip {
+      display: inline-block; padding: 4px 14px; border-radius: 999px;
+      font-family: var(--italic); font-style: italic; font-size: .72rem; letter-spacing: .04em;
+    }
+    .chip-olive { background: var(--olive-soft); color: var(--olive-dark); }
+    .chip-bs    { background: var(--bs-soft);   color: var(--bs-deep); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 13px 26px;
+      background: var(--olive); color: var(--paper);
+      border: 1px solid var(--olive); border-radius: 999px;
+      font-family: var(--sans); font-size: .85rem; letter-spacing: .1em; font-weight: 500;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .88; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 11px 24px;
+      border: 1px solid var(--olive); color: var(--olive);
+      border-radius: 999px; font-family: var(--sans); font-size: .82rem;
+      letter-spacing: .08em; transition: all .2s;
+    }
+    .btn-ghost:hover { background: var(--olive); color: var(--paper); }
+    .btn-ghost.bs { border-color: var(--bs-deep); color: var(--bs-deep); }
+    .btn-ghost.bs:hover { background: var(--bs); color: var(--olive-dark); border-color: var(--bs); }
+    .btn-text {
+      font-size: .82rem; color: var(--olive-dark);
+      letter-spacing: .06em; border-bottom: 1px solid var(--olive); padding-bottom: 2px;
+    }
+
+    /* ── WELCOME ── */
+    .welcome-section { padding-top: 100px; }
+    .chips-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+
+    /* ── STUDIO CONCEPT ── */
+    .concept-num-row { display: flex; gap: 18px; align-items: baseline; margin-bottom: 14px; }
+    .concept-num {
+      font-family: var(--italic); font-style: italic; font-weight: 500;
+      font-size: 2.8rem; color: var(--olive); line-height: 1;
+    }
+    .concept-subtitle {
+      font-family: var(--serif); font-size: .94rem;
+      font-weight: 500; letter-spacing: .06em; color: var(--ink);
+    }
+    .concept-box {
+      padding: 18px; background: var(--olive-tint);
+      border: 1px solid var(--olive-soft); border-radius: 8px; margin-bottom: 32px;
+    }
+    .concept-box-body {
+      font-family: var(--serif); font-size: .88rem;
+      color: var(--olive-dark); line-height: 2.4;
+    }
+    .concept-box-sub {
+      font-size: .8rem; color: var(--olive-dark); line-height: 1.9; margin-top: 12px;
+    }
+    .concept-inner-rule { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+    .concept-body { font-size: .88rem; line-height: 2.2; color: var(--ink-soft); margin-bottom: 20px; }
+    .concept-quote {
+      padding: 16px 18px; background: var(--olive-tint);
+      border-left: 2px solid var(--olive);
+      font-family: var(--serif); font-size: .9rem;
+      line-height: 2; color: var(--olive-dark); margin-bottom: 32px;
+    }
+    .concept-close {
+      text-align: center; padding: 28px 20px;
+      font-family: var(--serif); font-size: 1rem;
+      line-height: 2.4; color: var(--ink);
+      background: var(--paper-2); border-radius: 8px;
+    }
+    .concept-close span { color: var(--olive); }
+
+    /* ── レッスンカード ── */
+    .lessons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    .lesson-card { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .lesson-card-img-placeholder {
+      width: 100%; aspect-ratio: 3/2;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: .6rem; letter-spacing: .2em; color: rgba(255,255,255,.6);
+    }
+    .lesson-card-img-placeholder.yoga { background: linear-gradient(135deg, #7a9e7e, #4a6b50); }
+    .lesson-card-img-placeholder.bs   { background: linear-gradient(135deg, #d8be62, #8a7820); }
+    .lesson-card-body { padding: 18px 18px 12px; }
+    .lesson-card-en { font-family: var(--mono); font-size: .56rem; letter-spacing: .22em; color: var(--ink-mute); margin-bottom: 6px; }
+    .lesson-card-title { font-family: var(--serif); font-size: 1rem; font-weight: 500; margin-bottom: 6px; }
+    .lesson-card-sub { font-size: .78rem; color: var(--ink-soft); }
+    .lesson-card-footer { padding: 0 18px 18px; }
+    .lesson-card-img { width: 100%; aspect-ratio: 3/2; object-fit: cover; object-position: center; display: block; }
+
+    /* ── 料金 ── */
+    .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    .price-card { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .price-card-head { padding: 16px 20px; }
+    .price-card-head.yoga { background: var(--olive); color: var(--paper); }
+    .price-card-head.bs { background: var(--bs); color: var(--ink); }
+    .price-card-en { font-family: var(--mono); font-size: .56rem; letter-spacing: .2em; opacity: .7; }
+    .price-card-title { font-family: var(--serif); font-size: 1rem; font-weight: 500; margin-top: 4px; }
+    .price-list { list-style: none; padding: 16px 20px; margin: 0; }
+    .price-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .82rem; gap: 8px; }
+    .price-list li:last-child { border-bottom: none; }
+    .price-list .p-label { color: var(--ink-soft); white-space: nowrap; }
+    .price-list .p-val { font-family: var(--serif); font-weight: 500; color: var(--ink); text-align: right; }
+    .price-note { margin-top: 16px; font-size: .72rem; color: var(--ink-mute); text-align: center; }
+    .price-detail-link {
+      display: block; text-align: center; padding: 11px 20px;
+      font-family: var(--mono); font-size: .68rem; letter-spacing: .08em;
+      color: var(--olive-dark); border-top: 1px solid var(--line);
+      transition: background .2s;
+    }
+    .price-detail-link:hover { background: var(--olive-tint); }
+    .price-detail-link-bs { color: var(--bs-deep); }
+    .price-detail-link-bs:hover { background: var(--bs-tint); }
+
+    /* ── Likoレイアウト ── */
+    .liko-layout { display: grid; grid-template-columns: 260px 1fr; gap: 52px; align-items: center; }
+    .liko-img { width: 100%; border-radius: 8px; object-fit: cover; aspect-ratio: 2/3; display: block; }
+    .liko-text { text-align: left; }
+    .liko-text .eyebrow { text-align: left; }
+    .liko-body p { font-family: var(--serif); font-size: .92rem; color: var(--olive-dark); line-height: 2.2; margin-bottom: 1.2em; }
+    .liko-body p:last-child { margin-bottom: 1.6em; }
+    @media (max-width: 768px) {
+      .liko-layout { grid-template-columns: 1fr; gap: 28px; }
+      .liko-text { text-align: center; }
+      .liko-text .eyebrow { text-align: center; }
+      .liko-img { width: 100%; margin: 0 auto; aspect-ratio: 1/1; object-position: 50% 25%; order: 2; }
+      .liko-body { text-align: left; }
+      .liko-body p { font-size: .9rem; line-height: 1.9; letter-spacing: .02em; }
+    }
+
+    /* ── アクセス ── */
+    /* ── 体験の流れ ── */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 36px; position: relative; }
+    .steps-grid::before {
+      content: ''; position: absolute;
+      top: 28px; left: calc(16.6% + 8px); right: calc(16.6% + 8px);
+      height: 1px; background: var(--line);
+    }
+    .step-item { text-align: center; padding: 0 12px; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--olive); color: var(--paper);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: .72rem; letter-spacing: .12em;
+      margin: 0 auto 16px;
+    }
+    .step-item.bs .step-num { background: var(--bs-deep); }
+    .step-title { font-family: var(--serif); font-size: .94rem; font-weight: 500; margin-bottom: 8px; }
+    .step-desc { font-size: .76rem; color: var(--ink-soft); line-height: 1.9; }
+
+    .access-info { margin: 24px 0; display: flex; flex-direction: column; gap: 12px; }
+    .access-info dl { display: grid; grid-template-columns: 5em 1fr; gap: 4px 12px; margin: 0; font-size: .84rem; }
+    .access-info dt { color: var(--ink-mute); font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; padding-top: 2px; }
+    .access-info dd { margin: 0; color: var(--ink-soft); }
+
+    /* ── OUR FEATURES ── */
+    .features-group { margin-top: 32px; }
+    .features-group + .features-group { margin-top: 40px; }
+    .features-group-head { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .features-group-title { font-family: var(--serif); font-size: .94rem; font-weight: 500; letter-spacing: .04em; }
+    .feature-item {
+      display: flex; gap: 16px; padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .feature-item:last-child { border-bottom: none; }
+    .feature-num {
+      flex: 0 0 52px; font-family: var(--italic); font-style: italic;
+      font-weight: 500; font-size: 3.1rem; line-height: 1; color: var(--olive);
+    }
+    .feature-num.bs { color: var(--bs-deep); }
+    .feature-body { flex: 1; }
+    .feature-title { font-family: var(--serif); font-size: .9rem; font-weight: 500; line-height: 1.6; margin-bottom: 6px; }
+    .feature-desc { font-size: .78rem; color: var(--ink-soft); line-height: 2; }
+
+    /* ── スケジュール ── */
+    .schedule-btns { display: flex; flex-direction: row; gap: 12px; margin-top: 24px; }
+    .schedule-btn {
+      flex: 1; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 28px; border-radius: 6px;
+      font-family: var(--serif); font-size: .96rem; font-weight: 500;
+      letter-spacing: .08em; background: transparent;
+      transition: background .15s;
+    }
+    .schedule-btn.yoga { border: 1.5px solid var(--olive); color: var(--olive-dark); }
+    .schedule-btn.bs   { border: 1.5px solid var(--bs-deep); color: var(--bs-deep); }
+    .schedule-btn:hover { background: rgba(0,0,0,.03); }
+    .schedule-btn-arrow { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; opacity: .7; }
+
+    /* ── インストラクター ── */
+    .instructor-card { text-align: center; }
+    .instructor-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+    .instructor-img {
+      width: 88px; height: 88px; border-radius: 50%;
+      object-fit: cover; object-position: 20% center; flex-shrink: 0;
+      border: 1px solid var(--line);
+    }
+    .instructor-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: 4px; }
+    .instructor-role { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; color: var(--ink-mute); }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; justify-content: center; }
+    .badge { font-size: .62rem; padding: 3px 10px; border-radius: 999px; background: var(--olive-soft); color: var(--olive-dark); letter-spacing: .04em; }
+    .badge.bs { background: var(--bs-soft); color: var(--bs-deep); }
+    .instructor-text { font-size: .84rem; color: var(--ink-soft); line-height: 2; }
+
+    /* ── スタジオ写真ストリップ ── */
+    .photo-strip { padding: 0; }
+    .photo-strip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .photo-strip-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+
+    /* ── 実績数字 ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+    .stat-num {
+      font-family: var(--italic); font-style: italic; font-weight: 500;
+      font-size: 2.4rem; color: var(--olive); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-label { font-family: var(--mono); font-size: .63rem; color: var(--ink-mute); letter-spacing: .08em; }
+
+    /* ── 声 ── */
+    .voices-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+    .voice-card { background: var(--paper); padding: 20px; border-left: 2px solid var(--olive); }
+    .voice-card.bs { border-left-color: var(--bs); }
+    .voice-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .voice-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: center; border: 1px solid var(--line); flex-shrink: 0; background: var(--paper-2); display: block; }
+    .voice-meta { font-family: var(--mono); font-size: .66rem; color: var(--ink-mute); }
+    .voice-text { font-family: var(--serif); font-size: .86rem; line-height: 2.1; color: var(--ink); }
+
+    /* ── FAQ ── */
+    .faq-accordion { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .faq-acc-item { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); overflow: hidden; }
+    .faq-acc-q {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 20px; cursor: pointer; user-select: none;
+      list-style: none;
+    }
+    .faq-acc-q::-webkit-details-marker { display: none; }
+    .faq-acc-label { font-family: var(--italic); font-style: italic; font-size: 1rem; color: var(--olive); flex-shrink: 0; line-height: 1; }
+    .faq-acc-text { flex: 1; font-size: .88rem; color: var(--ink); line-height: 1.6; }
+    .faq-acc-icon { font-size: 1.1rem; color: var(--ink-mute); flex-shrink: 0; transition: transform .25s; font-weight: 300; }
+    details[open] .faq-acc-icon { transform: rotate(45deg); }
+    .faq-acc-a { padding: 0 20px 18px calc(20px + 12px + 1rem); font-size: .84rem; color: var(--ink-soft); line-height: 2; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--paper-2); padding: 56px 20px; text-align: center; }
+    .cta-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; margin: 12px 0 8px; color: var(--ink); }
+    .cta-sub { font-size: .84rem; color: var(--ink-soft); margin-bottom: 16px; line-height: 2; }
+    .cta-price { font-size: .78rem; color: var(--ink-mute); margin-bottom: 24px; }
+    .cta-price a { color: var(--olive-dark); border-bottom: 1px solid var(--olive); padding-bottom: 1px; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-direction: column; max-width: 320px; margin: 0 auto; }
+    .btn-line {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 24px; background: #06c755; color: #fff;
+      border-radius: 999px; font-size: .85rem; letter-spacing: .06em; font-weight: 500;
+    }
+    .btn-reserve {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 24px; border: 1px solid var(--olive); color: var(--olive);
+      border-radius: 999px; font-size: .85rem; letter-spacing: .06em; font-weight: 500;
+    }
+
+    /* ── Google Map ── */
+    .map-wrap { line-height: 0; }
+    .map-wrap iframe { width: 100%; height: 280px; border: 0; display: block; }
+
+    /* ── フッター ── */
+    footer {
+      background: var(--olive-dark); color: rgba(251,248,241,.65);
+      padding: 32px 22px 28px;
+    }
+    .footer-logo {
+      font-family: var(--italic); font-style: italic;
+      font-weight: 500; font-size: 1.3rem; color: var(--paper); letter-spacing: .01em;
+    }
+    .footer-logo small {
+      display: block; font-family: var(--mono); font-style: normal;
+      font-size: .54rem; letter-spacing: .25em; color: rgba(251,248,241,.5); margin-top: 4px;
+    }
+    .footer-addr { margin-top: 16px; font-size: .72rem; opacity: .75; line-height: 2; }
+    .footer-meta {
+      margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid rgba(251,248,241,.15);
+      display: flex; justify-content: space-between;
+      font-family: var(--mono); font-size: .58rem; letter-spacing: .15em; opacity: .55;
+    }
+
+    /* ── スマホ固定CTA ── */
+    .sticky-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 150; padding: 10px 14px;
+      background: rgba(251,248,241,.96); backdrop-filter: blur(6px);
+      border-top: 1px solid var(--line);
+    }
+    .sticky-cta.visible { display: flex; gap: 10px; }
+    .sticky-btn {
+      flex: 1; padding: 12px; text-align: center;
+      border-radius: 999px; font-size: .8rem; letter-spacing: .06em; font-weight: 500;
+    }
+    .sticky-btn-reserve { background: var(--olive); color: var(--paper); }
+    .sticky-btn-line { background: var(--paper); color: var(--olive-dark); border: 1px solid var(--olive); }
+
+    .sp-br { display: none; }
+    /* ── レスポンシブ ── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav {
+        position: fixed; top: 0; right: -100%;
+        width: 72%; max-width: 260px; height: 100vh;
+        background: var(--paper); padding: 68px 24px 24px;
+        transition: right .3s; z-index: 200; overflow-y: auto;
+        box-shadow: -8px 0 24px rgba(0,0,0,.08);
+      }
+      .nav.open { right: 0; }
+      .nav-overlay { display: block; opacity: 0; pointer-events: none; transition: opacity .3s; }
+      .nav-overlay.open { opacity: 1; pointer-events: auto; }
+      .nav ul { flex-direction: column; gap: 0; }
+      .nav ul li { border-bottom: 1px solid var(--line); }
+      .nav a:not(.btn-nav) { display: block; padding: 14px 0; font-size: .92rem; }
+      .btn-nav { display: inline-block; margin: 16px 0 0; }
+      body { padding-bottom: 72px; }
+      .sticky-cta { display: flex; }
+      .fv-content { padding: 80px 22px 210px; }
+      .fv-cards-wrap { padding: 0 10px; }
+      .welcome-section { padding-top: 90px; }
+      .lessons-grid { grid-template-columns: 1fr; gap: 16px; }
+      .price-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 28px; }
+      .steps-grid::before { display: none; }
+      .step-item { text-align: left; padding: 0; display: grid; grid-template-columns: 52px 1fr; column-gap: 14px; align-items: start; }
+      .step-num { width: 52px; height: 52px; font-size: .6rem; margin: 0; grid-row: 1 / 3; align-self: start; }
+      .step-title { margin-bottom: 2px; }
+      .step-desc { line-height: 1.8; }
+      .schedule-btns { flex-direction: column; }
+      .schedule-btn { padding: 18px 20px; font-size: .88rem; }
+      .stats-grid { gap: 10px; }
+      .stat-num { font-size: 1.9rem; }
+      .instructor-text { max-width: 320px; margin: 0 auto; font-size: .9rem; line-height: 1.9; letter-spacing: .02em; }
+      .sp-br { display: inline; }
+    }
+    @media (max-width: 480px) {
+      .fv-tagline { font-size: 1.6rem; }
+      .fv-title { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      Studio Liko
+      <small>YOGA · BABY SIGN · MEINOHAMA</small>
+    </a>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="#lesson">クラス紹介</a></li>
+        <li><a href="#price">料金</a></li>
+        <li><a href="#schedule">スケジュール</a></li>
+        <li><a href="#instructor">講師育成</a></li>
+        <li><a href="#access">アクセス</a></li>
+        <li><a href="#contact" class="btn-nav">体験を予約する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ===== FV ===== -->
+<section class="fv">
+  <!-- スライド1：ヨガ -->
+  <div class="fv-slide active">
+    <img src="img/fv-yoga.jpg" alt="ヨガ" class="fv-img">
+    <div class="fv-overlay"></div>
+    <div class="fv-content">
+      <div class="fv-tagline">わたしを整える<br>ヨガ。</div>
+      <div class="fv-rule"></div>
+      <p class="fv-place">FUKUOKA · MEINOHAMA</p>
+    </div>
+  </div>
+  <!-- スライド2：ベビーサイン -->
+  <div class="fv-slide">
+    <img src="img/fv-babysign.jpg" alt="ベビーサイン" class="fv-img">
+    <div class="fv-overlay"></div>
+    <div class="fv-content">
+      <div class="fv-tagline">心が通う<br>ベビーサイン。</div>
+      <div class="fv-rule"></div>
+      <p class="fv-place">FUKUOKA · MEINOHAMA</p>
+    </div>
+  </div>
+
+  <div class="fv-cards-wrap">
+    <div class="fv-cards">
+      <a href="#lesson" class="fv-card yoga-card">
+        <div class="fv-card-body">
+          <p class="fv-card-en">YOGA</p>
+          <p class="fv-card-title">ヨガレッスン</p>
+          <p class="fv-card-sub">わたしを整える時間</p>
+        </div>
+        <div class="fv-card-footer"><span>くわしく</span><span>→</span></div>
+      </a>
+      <a href="#lesson" class="fv-card bs">
+        <div class="fv-card-body">
+          <p class="fv-card-en">BABY SIGN</p>
+          <p class="fv-card-title">ベビーサイン教室</p>
+          <p class="fv-card-sub">ことばのまえに、心が通う時間</p>
+        </div>
+        <div class="fv-card-footer"><span>くわしく</span><span>→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WELCOME ===== -->
+<section class="section bg-white welcome-section">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">Welcome</p>
+      <h2 class="sec-title">福岡・姪浜のスタジオへ</h2>
+      <div class="rule-line"></div>
+    </div>
+    <p class="sec-lead">
+      深く息をして、心を整える。<br>
+      ヨガとベビーサイン、ふたつの教室をここで。
+    </p>
+    <div class="chips-row">
+      <span class="chip chip-olive">少人数制（最大7名）</span>
+      <span class="chip chip-olive">完全予約制</span>
+      <span class="chip chip-olive">はじめての方歓迎</span>
+      <span class="chip chip-olive">50代・60代歓迎</span>
+    </div>
+    <div style="margin-top:20px;">
+      <a href="#first-time" class="btn-text">初めての方へ →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Likoについて ===== -->
+<section class="section" style="background:var(--olive-tint);">
+  <div class="container" style="max-width:860px;">
+    <div class="liko-layout">
+      <img src="img/liko-story.jpg" alt="Likoの由来" loading="lazy" class="liko-img">
+      <div class="liko-text">
+        <p class="eyebrow">ABOUT THE NAME</p>
+        <p style="font-family:var(--italic);font-style:italic;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--olive);margin:12px 0 20px;letter-spacing:.06em;">Liko</p>
+        <div class="liko-body">
+          <p>ハワイ語で「新芽・若葉・芽吹き・輝き」を意味する言葉。</p>
+          <p>子どもたちの名前の頭文字からとって生まれた、大切な名前です。つぼみだった子どもたちが光り輝いて、若々しい緑になっていきますようにと、願いを込めました。</p>
+          <p>小さなつぼみが若葉になり、やがて花を咲かせるように。親子の成長を、あたたかく見守る場所でありたいという想いが込められています。</p>
+        </div>
+        <p style="font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;color:var(--olive);opacity:.7;">
+          FUKUOKA · MEINOHAMA · STUDIO LIKO
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== クラス紹介 ===== -->
+<section class="section" id="lesson">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">LESSON</p>
+      <h2 class="sec-title">クラス紹介</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="lessons-grid">
+      <div class="lesson-card">
+        <img src="img/studio-1.jpg" alt="ヨガクラス" class="lesson-card-img" loading="lazy" style="object-position: center center;">
+        <div class="lesson-card-body">
+          <p class="lesson-card-en">YOGA</p>
+          <h3 class="lesson-card-title">ヨガクラス</h3>
+          <p class="lesson-card-sub">体の硬さや年齢は関係ありません。初めての方から50・60代まで、定員7名の少人数制でていねいにご案内します。シニアヨガも対応。</p>
+        </div>
+        <div class="lesson-card-footer">
+        </div>
+      </div>
+      <div class="lesson-card">
+        <img src="img/studio-2.jpg" alt="ベビーサインクラス" class="lesson-card-img" loading="lazy" style="object-position: center center;">
+        <div class="lesson-card-body">
+          <p class="lesson-card-en">BABY SIGN</p>
+          <h3 class="lesson-card-title">ベビーサインクラス</h3>
+          <p class="lesson-card-sub">日本ベビーサイン協会認定マスター講師による正規プログラム。赤ちゃんと言葉より先に、気持ちで通い合える時間です。</p>
+        </div>
+        <div class="lesson-card-footer">
+        </div>
+      </div>
+    </div>
+    <!-- ゆっくりさんクラス -->
+    <div style="margin-top:16px;padding:24px 28px;background:var(--olive-tint);border:1px solid var(--olive-soft);border-left:3px solid var(--olive);border-radius:8px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+      <div>
+        <p style="font-family:var(--mono);font-size:.56rem;letter-spacing:.22em;color:var(--olive);margin-bottom:6px;">SPECIAL CLASS</p>
+        <h3 style="font-family:var(--serif);font-size:1rem;font-weight:500;margin-bottom:8px;">ゆっくりさんクラス</h3>
+        <p style="font-size:.8rem;color:var(--ink-soft);line-height:2;">ダウン症など、発達がゆっくりな赤ちゃんと保護者のための専用ベビーサイン教室。<br>まわりを気にせず、安心して参加できる場所です。</p>
+      </div>
+      <a href="#contact" class="btn-ghost" style="white-space:nowrap;">お問い合わせ →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== 料金 ===== -->
+<section class="section" id="price">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">PRICE</p>
+      <h2 class="sec-title">料金</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-card-head yoga">
+          <p class="price-card-en">YOGA</p>
+          <p class="price-card-title">ヨガクラス</p>
+        </div>
+        <ul class="price-list">
+          <li><span class="p-label">体験レッスン</span><span class="p-val">1,500円</span></li>
+          <li><span class="p-label">定員</span><span class="p-val">7名</span></li>
+        </ul>
+        <a href="price.html" class="price-detail-link">月謝・チケット・コース料金を見る →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-card-head bs">
+          <p class="price-card-en">BABY SIGN</p>
+          <p class="price-card-title">ベビーサインクラス</p>
+        </div>
+        <ul class="price-list">
+          <li><span class="p-label">体験会</span><span class="p-val">3,000円</span></li>
+          <li><span class="p-label">対象</span><span class="p-val">0〜2歳と保護者</span></li>
+        </ul>
+        <a href="price.html#bs" class="price-detail-link price-detail-link-bs">コース料金・詳細を見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== インストラクター ===== -->
+<section class="section bg-white" id="instructor">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">INSTRUCTOR</p>
+      <h2 class="sec-title">講師のご紹介</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="instructor-card">
+      <div class="instructor-header">
+        <img src="img/instructor.jpg" alt="岩本理子" class="instructor-img" loading="lazy">
+        <div>
+          <h2 class="instructor-name">岩本 理子</h2>
+          <p class="instructor-role">Studio Liko 代表</p>
+        </div>
+      </div>
+      <div class="badges">
+        <span class="badge">福岡唯一 日本ベビーサイン協会認定マスター講師</span>
+        <span class="badge">全米ヨガアライアンス RYT500</span>
+        <span class="badge bs">3児の母</span>
+      </div>
+      <p class="instructor-text">
+        「ヨガで癒しを、ベビーサインで子育ての自信を届けたい。」<br>
+        7,000組以上・1万人以上の親子にベビーサインを伝えてきました。
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;margin-top:12px;">
+        <a href="#" class="btn-text">プロフィール詳細 →</a>
+        <a href="#" class="btn-text">講師一覧を見る →</a>
+      </div>
+    </div>
+    <img src="img/instructor-park.jpg" alt="レッスンの様子" loading="lazy" style="width:100%;border-radius:8px;margin-top:28px;object-fit:cover;aspect-ratio:16/9;object-position:center 40%;display:block;">
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== お客様の声 ===== -->
+<section class="section" id="voices">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">Voices</p>
+      <h2 class="sec-title">通われた方の声</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="voices-list">
+      <div class="voice-card">
+        <div class="voice-top">
+          <div class="voice-img" style="background:var(--olive-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--olive-dark);">準備中</div>
+          <p class="voice-meta">F さま／ベビーサイン受講</p>
+        </div>
+        <p class="voice-text">「今しかないこの時期にベビーサインに出逢えて本当に良かったなぁと思います。素敵な時間、空間、学びを本当にありがとうございました。」</p>
+      </div>
+      <div class="voice-card bs">
+        <div class="voice-top">
+          <div class="voice-img" style="background:var(--bs-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--bs-deep);">準備中</div>
+          <p class="voice-meta">H さま／ヨガクラス受講</p>
+        </div>
+        <p class="voice-text">「私には自分に大切なものを見つめて補充できる、かかせない場所と時間です。先生の穏やかであたたかな笑顔に癒されます！」</p>
+      </div>
+    </div>
+    <div style="margin-top:20px;"><a href="#" class="btn-text">もっと見る →</a></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== はじめての方へ ===== -->
+<section class="section bg-white" id="first-time">
+  <div class="container" style="text-align:center;">
+    <div class="secthead center">
+      <p class="eyebrow">FIRST TIME</p>
+      <h2 class="sec-title">初めての方へ</h2>
+      <div class="rule-line"></div>
+    </div>
+    <p class="sec-lead">
+      「気になるけど、初めてだから不安…」<br>
+      そんな気持ちに、全部お答えします。
+    </p>
+    <div class="steps-grid" style="margin-top:40px;">
+      <div class="step-item">
+        <div class="step-num">STEP<br>01</div>
+        <p class="step-title">ご予約</p>
+        <p class="step-desc">LINEまたは予約フォームからお気軽にどうぞ</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP<br>02</div>
+        <p class="step-title">スタジオへ</p>
+        <p class="step-desc">姪浜エリア・完全予約制。動きやすい服装でOK</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP<br>03</div>
+        <p class="step-title">体験レッスン</p>
+        <p class="step-desc">ヨガマット無料貸出。持ち物は飲み物とタオルだけでOK</p>
+      </div>
+    </div>
+    <div style="margin-top:36px;">
+      <a href="#price" class="btn-primary">料金・持ち物の詳細を見る →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== スケジュール ===== -->
+<section class="section" id="schedule">
+  <div class="container">
+    <p class="eyebrow">SCHEDULE</p>
+    <div class="schedule-btns">
+      <a href="https://drive.google.com/YOUR_YOGA_FILE_ID" class="schedule-btn yoga" target="_blank" rel="noopener">
+        <span>ヨガのスケジュールを見る</span>
+        <span class="schedule-btn-arrow">↓</span>
+      </a>
+      <a href="https://drive.google.com/YOUR_BS_FILE_ID" class="schedule-btn bs" target="_blank" rel="noopener">
+        <span>ベビーサインのスケジュールを見る</span>
+        <span class="schedule-btn-arrow">↓</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== FAQ ===== -->
+<section class="section bg-white" id="faq">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="sec-title">よくある質問</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="faq-accordion">
+      <details class="faq-acc-item">
+        <summary class="faq-acc-q">
+          <span class="faq-acc-label">Q</span>
+          <span class="faq-acc-text">体が硬くてもヨガはできますか？</span>
+          <span class="faq-acc-icon">+</span>
+        </summary>
+        <p class="faq-acc-a">大丈夫です。少人数なので一人ひとりに合わせてご案内します。</p>
+      </details>
+      <details class="faq-acc-item">
+        <summary class="faq-acc-q">
+          <span class="faq-acc-label">Q</span>
+          <span class="faq-acc-text">50代・60代でも通えますか？</span>
+          <span class="faq-acc-icon">+</span>
+        </summary>
+        <p class="faq-acc-a">はい、ぜひいらしてください。シニアヨガのクラスもご用意しており、50代・60代の方にも多く通っていただいています。</p>
+      </details>
+      <details class="faq-acc-item">
+        <summary class="faq-acc-q">
+          <span class="faq-acc-label">Q</span>
+          <span class="faq-acc-text">赤ちゃんが泣いても大丈夫ですか？</span>
+          <span class="faq-acc-icon">+</span>
+        </summary>
+        <p class="faq-acc-a">もちろんです。安心して来ていただける場所でありたいと思っています。</p>
+      </details>
+      <details class="faq-acc-item">
+        <summary class="faq-acc-q">
+          <span class="faq-acc-label">Q</span>
+          <span class="faq-acc-text">ファーストサインとは違いますか？</span>
+          <span class="faq-acc-icon">+</span>
+        </summary>
+        <p class="faq-acc-a">はい、Studio Likoでお伝えしているのは、日本ベビーサイン協会認定の「ベビーサイン®」です。ファーストサインとは、考え方やカリキュラム、認定団体が異なります。Studio Likoでは、協会認定のマスター講師が、正式なカリキュラムに基づいて、赤ちゃんとの手を使ったコミュニケーションを丁寧にお伝えしています。</p>
+      </details>
+    </div>
+    <div style="margin-top:28px;text-align:center;"><a href="#" class="btn-text">もっと見る →</a></div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <p class="eyebrow">CONTACT</p>
+  <h2 class="cta-title">まずは、お気軽に<br class="sp-br">ご連絡ください。</h2>
+  <p class="cta-sub">「気になるだけ」「どのクラスか迷っている」<br class="sp-br">で大丈夫です。一緒に確認しましょう。</p>
+  <div class="cta-btns">
+    <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="btn-primary" target="_blank" rel="noopener">
+      体験レッスンを予約する →
+    </a>
+    <a href="https://page.line.me/ttp2821f" class="btn-line">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.86 1.44 5.4 3.7 7.1L5 22l4.2-1.4C10.4 21 11.2 21 12 21c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+      LINEで相談してみる
+    </a>
+  </div>
+</section>
+
+<!-- ===== アクセス ===== -->
+<section class="section" id="access">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">ACCESS</p>
+      <h2 class="sec-title">アクセス</h2>
+      <div class="rule-line"></div>
+    </div>
+    <div class="access-info">
+      <dl>
+        <dt>住所</dt>
+        <dd>福岡市西区愛宕南2丁目12-12（姪浜エリア）</dd>
+        <dt>最寄り駅</dt>
+        <dd>地下鉄空港線 姪浜駅 徒歩10分<br>地下鉄空港線 室見駅 徒歩10分</dd>
+        <dt>駐車場</dt>
+        <dd>2台あり（無料）</dd>
+        <dt>営業</dt>
+        <dd>完全予約制　定休日：不定休</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps?q=福岡市西区愛宕南2丁目12-12+ユンゲルハイム姪浜&output=embed&hl=ja"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-logo">
+    Studio Liko
+    <small>MEINOHAMA · FUKUOKA</small>
+  </div>
+  <p class="footer-addr">
+    福岡市西区愛宕南2丁目12-12（姪浜エリア）<br>
+    完全予約制 ／ 定休日：不定休
+  </p>
+  <div class="footer-meta">
+    <span>© 2024 STUDIO LIKO</span>
+    <span>
+      <a href="https://www.instagram.com/studio_liko_/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Instagram @studio_liko_</a>
+      　·
+      <a href="https://page.line.me/ttp2821f" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">LINE</a>
+    </span>
+  </div>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="sticky-cta visible" id="stickyCta">
+  <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="sticky-btn sticky-btn-reserve" target="_blank">体験を予約する</a>
+  <a href="https://page.line.me/ttp2821f" class="sticky-btn sticky-btn-line">LINEで相談</a>
+</div>
+
+<script>
+  // FV高さをJSで実ピクセル固定（svh/dvh非対応ブラウザ対策）
+  (function() {
+    var fv = document.querySelector('.fv');
+    if (fv) fv.style.height = window.innerHeight + 'px';
+  })();
+
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  const overlay = document.getElementById('navOverlay');
+  function toggleNav() {
+    nav.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+  ham.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', toggleNav);
+
+  // FVスライドショー（5秒切り替え）
+  const slides = document.querySelectorAll('.fv-slide');
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+
+  let lastY = 0;
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80) {
+      header.classList.toggle('hidden', y > lastY);
+    } else {
+      header.classList.remove('hidden');
+    }
+    lastY = y;
+  }, { passive: true });
+</script>
+</body>
+</html>
