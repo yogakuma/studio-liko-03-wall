@@ -182,7 +182,6 @@
 
     /* ── スマホ固定CTA ── */
     .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 150; padding: 10px 14px; background: rgba(251,248,241,.96); backdrop-filter: blur(6px); border-top: 1px solid var(--line); }
-    .sticky-cta.visible { display: flex; gap: 10px; }
     .sticky-btn { flex: 1; padding: 12px; text-align: center; border-radius: 999px; font-size: .8rem; letter-spacing: .06em; font-weight: 500; }
     .sticky-btn-reserve { background: var(--olive); color: var(--paper); }
     .sticky-btn-line { background: var(--paper); color: var(--olive-dark); border: 1px solid var(--olive); }
@@ -199,7 +198,7 @@
       .nav a:not(.btn-nav) { display: block; padding: 14px 0; font-size: .92rem; }
       .btn-nav { display: inline-block; margin: 16px 0 0; }
       body { padding-bottom: 72px; }
-      .sticky-cta { display: flex; }
+      .sticky-cta { display: flex; gap: 10px; }
       .feature-cards { grid-template-columns: 1fr; }
       .pick-grid { grid-template-columns: 1fr; }
       .checklist { grid-template-columns: 1fr; }
