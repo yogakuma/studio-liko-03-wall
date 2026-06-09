@@ -41,6 +41,7 @@
       background: rgba(251,248,241,.96); backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--line); transition: transform .3s;
     }
+    .header.hidden { transform: translateY(-100%); }
     .header-inner {
       max-width: 1080px; margin: 0 auto;
       padding: 14px 20px;
@@ -77,23 +78,35 @@
     .btn-ghost:hover { background: var(--olive); color: var(--paper); }
     .btn-ghost.bs { border-color: var(--bs-deep); color: var(--bs-deep); }
     .btn-ghost.bs:hover { background: var(--bs); color: var(--olive-dark); border-color: var(--bs); }
-    .btn-text { font-size: .82rem; color: var(--olive-dark); letter-spacing: .06em; border-bottom: 1px solid var(--olive); padding-bottom: 2px; }
     .btn-line { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: #06c755; color: #fff; border-radius: 999px; font-size: .85rem; letter-spacing: .06em; font-weight: 500; }
-    .badge { font-size: .62rem; padding: 3px 10px; border-radius: 999px; background: var(--olive-soft); color: var(--olive-dark); letter-spacing: .04em; }
-    .badge.bs { background: var(--bs-soft); color: var(--bs-deep); }
 
     /* ── ページヒーロー ── */
     .page-hero {
+      position: relative;
       padding: 110px 22px 52px;
-      background: var(--paper-2);
       border-bottom: 1px solid var(--line);
+      overflow: hidden;
     }
-    .page-hero-inner { max-width: 1080px; margin: 0 auto; }
+    .page-hero-img {
+      position: absolute; inset: 0;
+      background: url(img/guide-hero.jpg) center 40% / cover no-repeat;
+      opacity: .18;
+    }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; }
     .page-hero-en { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; color: var(--olive); text-transform: uppercase; margin-bottom: 14px; }
     .page-hero-title { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; margin-bottom: 14px; letter-spacing: .04em; }
     .page-hero-lead { font-size: .92rem; color: var(--ink-soft); line-height: 2.1; }
     .breadcrumb { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; color: var(--ink-mute); margin-top: 20px; }
     .breadcrumb a { color: var(--olive); }
+
+    /* ── セクション写真 ── */
+    .section-photo {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; border-radius: 8px;
+      margin-top: 32px;
+    }
+    .section-photo.ratio-4-3 { aspect-ratio: 4/3; }
+    .section-photo.ratio-3-2 { aspect-ratio: 3/2; }
 
     /* ── 特徴カード ── */
     .feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
@@ -157,7 +170,9 @@
     .faq-a { margin-top: 10px; font-size: .84rem; color: var(--ink-soft); line-height: 2; padding-left: 22px; }
 
     /* ── アクセス ── */
-    .access-box { background: var(--paper-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px; margin-top: 24px; }
+    .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; align-items: start; }
+    .access-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; }
+    .access-box { background: var(--paper-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px; }
     .access-name { font-family: var(--serif); font-size: 1rem; font-weight: 500; margin-bottom: 12px; }
     .access-info { font-size: .84rem; color: var(--ink-soft); line-height: 2.2; }
     .access-note { margin-top: 14px; background: var(--olive-tint); border-radius: 6px; padding: 14px 16px; }
@@ -202,6 +217,7 @@
       .feature-cards { grid-template-columns: 1fr; }
       .pick-grid { grid-template-columns: 1fr; }
       .checklist { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -218,7 +234,6 @@
       <ul>
         <li><a href="index.html#yoga">ヨガ</a></li>
         <li><a href="index.html#babysign">ベビーサイン</a></li>
-        <li><a href="#" style="font-weight:500;color:var(--olive);">講師育成</a></li>
         <li><a href="guide.html" class="active">初めての方へ</a></li>
         <li><a href="index.html#voices">受講者の声</a></li>
         <li><a href="index.html#instructor">プロフィール</a></li>
@@ -235,6 +250,7 @@
 
 <!-- ページヒーロー -->
 <div class="page-hero">
+  <div class="page-hero-img"></div>
   <div class="page-hero-inner">
     <p class="page-hero-en">First Time</p>
     <h1 class="page-hero-title">初めての方へ</h1>
@@ -277,6 +293,7 @@
         <p class="feature-card-desc">体験後に継続をご案内することはありますが、強引なお誘いは一切しておりません。「まず雰囲気だけ見たい」という段階でも安心してお越しください。</p>
       </div>
     </div>
+    <img src="img/guide-studio.jpg" alt="スタジオの様子" class="section-photo" loading="lazy">
   </div>
 </section>
 
@@ -308,8 +325,8 @@
       <div class="pick-card bs-card">
         <p class="pick-label" style="color:var(--bs-deep);">BABY SIGN</p>
         <h3 class="pick-title">こんな方はベビーサインへ</h3>
-        <ul class="pick-list" style="--dot-color:var(--bs-deep);">
-          <li style="--c:var(--bs-deep);">赤ちゃんの気持ちをもっと知りたい</li>
+        <ul class="pick-list">
+          <li>赤ちゃんの気持ちをもっと知りたい</li>
           <li>「何で泣いているか分からない」が続いている</li>
           <li>子育てに少し自信をつけたい</li>
           <li>同じ月齢のママ友とつながりたい</li>
@@ -333,6 +350,7 @@
       <div class="rule-line"></div>
     </div>
     <p class="sec-lead">初回から継続まで、5ステップでご案内します。</p>
+    <img src="img/guide-yoga.jpg" alt="ヨガのレッスン風景" class="section-photo ratio-3-2" loading="lazy">
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
@@ -427,6 +445,7 @@
       <div class="rule-line"></div>
     </div>
     <p class="sec-lead">赤ちゃんと一緒に、気軽に来てみてください。</p>
+    <img src="img/guide-bs.jpg" alt="ベビーサインのレッスン風景" class="section-photo ratio-4-3" loading="lazy">
     <div class="steps">
       <div class="step">
         <div class="step-num bs">1</div>
@@ -555,18 +574,21 @@
       <h2 class="sec-title">アクセス・予約方法</h2>
       <div class="rule-line"></div>
     </div>
-    <div class="access-box">
-      <p class="access-name">Studio Liko</p>
-      <p class="access-info">
-        福岡県福岡市西区愛宕南2丁目12-12<br>
-        ユンゲルハイム姪浜 1F<br>
-        姪浜駅・室見駅より徒歩10分<br>
-        🅿️ 駐車場2台あり
-      </p>
-      <p style="font-size:.8rem;color:var(--ink-mute);margin-top:10px;">西区・早良区・城南区・糸島方面など幅広いエリアからご来館いただいています。</p>
-      <div class="access-note">
-        <p class="access-note-head">予約は、LINEが一番かんたんです</p>
-        <p class="access-note-body">「体験したい」「どのクラスか迷っています」そんな一言で大丈夫です。難しく考えなくてOK。</p>
+    <div class="access-grid">
+      <img src="img/guide-access.jpg" alt="Studio Liko 入口" class="access-photo" loading="lazy">
+      <div class="access-box">
+        <p class="access-name">Studio Liko</p>
+        <p class="access-info">
+          福岡県福岡市西区愛宕南2丁目12-12<br>
+          ユンゲルハイム姪浜 1F<br>
+          姪浜駅・室見駅より徒歩10分<br>
+          🅿️ 駐車場2台あり
+        </p>
+        <p style="font-size:.8rem;color:var(--ink-mute);margin-top:10px;">西区・早良区・城南区・糸島方面など幅広いエリアからご来館いただいています。</p>
+        <div class="access-note">
+          <p class="access-note-head">予約は、LINEが一番かんたんです</p>
+          <p class="access-note-body">「体験したい」「どのクラスか迷っています」そんな一言で大丈夫です。難しく考えなくてOK。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -599,7 +621,6 @@
     <div class="footer-links">
       <a href="index.html#yoga">ヨガ</a>
       <a href="index.html#babysign">ベビーサイン</a>
-      <a href="#">講師育成</a>
       <a href="guide.html">初めての方へ</a>
       <a href="index.html#instructor">プロフィール</a>
       <a href="index.html#faq">よくある質問</a>
@@ -616,7 +637,7 @@
 </footer>
 
 <!-- スマホ固定CTA -->
-<div class="sticky-cta visible" id="stickyCta">
+<div class="sticky-cta" id="stickyCta">
   <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="sticky-btn sticky-btn-reserve" target="_blank">体験を予約する</a>
   <a href="https://page.line.me/ttp2821f" class="sticky-btn sticky-btn-line">LINEで相談</a>
 </div>
