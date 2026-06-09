@@ -86,7 +86,11 @@
       object-fit: cover; object-position: center center;
     }
     .fv-slide:first-child .fv-img { object-position: 47% center; }
-    .fv-slide:nth-child(2) .fv-img { object-fit: cover; object-position: 78% 45%; }
+    /* ベビーサイン：PC=DSCF4415全員構図、SP=DSCF4153先生+看板中心 */
+    .fv-slide:nth-child(2) .fv-img { object-fit: cover; object-position: 50% 42%; }
+    @media (max-width: 767px) {
+      .fv-slide:nth-child(2) .fv-img { object-position: 50% 48%; }
+    }
     .fv-overlay {
       position: absolute; inset: 0;
       background: rgba(40,35,20,.26);
@@ -549,7 +553,10 @@
   </div>
   <!-- スライド2：ベビーサイン -->
   <div class="fv-slide">
-    <img src="img/fv-babysign.jpg" alt="ベビーサイン" class="fv-img">
+    <picture>
+      <source media="(max-width: 767px)" srcset="img/fv-babysign-sp.jpg">
+      <img src="img/fv-babysign.jpg" alt="ベビーサイン" class="fv-img">
+    </picture>
     <div class="fv-overlay"></div>
     <div class="fv-content">
       <div class="fv-tagline">心が通う<br>ベビーサイン。</div>
