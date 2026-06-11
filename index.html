@@ -392,6 +392,11 @@
     .voices-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
     .voice-card { background: var(--paper); padding: 20px; border-left: 2px solid var(--olive); }
     .voice-card.bs { border-left-color: var(--bs); }
+    .voice-card.voice-hidden { display: none; }
+    .voices-list.expanded .voice-card.voice-hidden { display: block; }
+    .voices-toggle-wrap { display: flex; justify-content: center; margin-top: 22px; }
+    .voices-toggle { background: none; border: none; cursor: pointer; font-family: inherit; font-size: .82rem; color: var(--olive-dark); letter-spacing: .06em; border-bottom: 1px solid var(--olive); padding: 0 0 2px; transition: opacity .2s; }
+    .voices-toggle:hover { opacity: .7; }
     .voice-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
     .voice-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: center; border: 1px solid var(--line); flex-shrink: 0; background: var(--paper-2); display: block; }
     .voice-meta { font-family: var(--mono); font-size: .66rem; color: var(--ink-mute); }
@@ -773,27 +778,30 @@
         </div>
         <p class="voice-text">「自分に大切なものを見つめて補充できる、かかせない場所と時間」</p>
       </div>
-      <div class="voice-card bs">
+      <div class="voice-card bs voice-hidden">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--bs-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--bs-deep);">準備中</div>
           <p class="voice-meta">西区 Y さま／ベビーサイン教室</p>
         </div>
         <p class="voice-text">「息子の見えてる世界を垣間見れました！」</p>
       </div>
-      <div class="voice-card">
+      <div class="voice-card voice-hidden">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--olive-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--olive-dark);">準備中</div>
           <p class="voice-meta">K さま／ヨガ教室</p>
         </div>
         <p class="voice-text">「ヨガを続けて心身共に健康になっていきたいです」</p>
       </div>
-      <div class="voice-card bs">
+      <div class="voice-card bs voice-hidden">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--bs-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--bs-deep);">準備中</div>
           <p class="voice-meta">早良区 A さま／ベビーサイン教室</p>
         </div>
         <p class="voice-text">「サインのおかげでとても楽しく初めての育児ができました！」</p>
       </div>
+    </div>
+    <div class="voices-toggle-wrap">
+      <button class="voices-toggle" id="voicesToggle" type="button" aria-expanded="false">もっと見る →</button>
     </div>
   </div>
 </section>
@@ -1000,6 +1008,17 @@
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }, 5000);
+
+  // 受講者の声 もっと見る／閉じる
+  const voicesToggle = document.getElementById('voicesToggle');
+  const voicesList = document.querySelector('#voices .voices-list');
+  if (voicesToggle && voicesList) {
+    voicesToggle.addEventListener('click', () => {
+      const expanded = voicesList.classList.toggle('expanded');
+      voicesToggle.textContent = expanded ? '閉じる ↑' : 'もっと見る →';
+      voicesToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  }
 
   let lastY = 0;
   const header = document.getElementById('header');
