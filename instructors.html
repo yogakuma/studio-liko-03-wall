@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>講師紹介 | Studio Liko</title>
+  <meta name="description" content="Studio Likoの講師をご紹介します。代表・岩本理子をはじめ、それぞれの経験と視点を持ったヨガ・ピラティス講師が、あなたのペースに合わせてご案内します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --olive:      #6b8f71;
+      --olive-dark: #4a6b50;
+      --olive-tint: #eef4ee;
+      --olive-soft: #e8f0e9;
+      --bs:         #d8be62;
+      --bs-deep:    #ab8d33;
+      --bs-soft:    #f5ecc8;
+      --bs-tint:    #fbf5dc;
+      --paper:      #fbf8f1;
+      --paper-2:    #f4efe2;
+      --ink:        #1f1d18;
+      --ink-soft:   #4a4641;
+      --ink-mute:   #8a857c;
+      --line:       #e5dfd0;
+      --serif:  "Shippori Mincho", "Hiragino Mincho ProN", serif;
+      --sans:   "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+      --italic: "Cormorant Garamond", serif;
+      --mono:   "JetBrains Mono", ui-monospace, monospace;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.8; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── ヘッダー ── */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(251,248,241,.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); transition: transform .3s; }
+    .header.hidden { transform: translateY(-100%); }
+    .header-inner { max-width: 1080px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--italic); font-style: italic; font-weight: 500; font-size: 1.3rem; line-height: 1.1; }
+    .logo small { display: block; font-family: var(--mono); font-style: normal; font-size: .56rem; letter-spacing: .2em; color: var(--ink-mute); margin-top: 3px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 1.2px; background: var(--ink); transition: all .3s; }
+    .nav ul { display: flex; gap: 22px; list-style: none; align-items: center; }
+    .nav a { font-size: .8rem; letter-spacing: .04em; }
+    .nav a:hover { color: var(--olive); }
+    .nav a.active { color: var(--olive); font-weight: 500; }
+    .btn-nav { background: var(--olive); color: var(--paper) !important; padding: 8px 18px; border-radius: 999px; font-size: .78rem; }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 190; }
+
+    /* ── 共通 ── */
+    .section { padding: 64px 0; }
+    .section.bg-warm { background: var(--paper-2); }
+    .section.bg-white { background: #fff; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+    .eyebrow { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; color: var(--olive); text-transform: uppercase; margin-bottom: 10px; }
+    .sec-title { font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 500; line-height: 1.7; margin-bottom: 10px; letter-spacing: .04em; }
+    .sec-lead { font-size: .88rem; color: var(--ink-soft); line-height: 2.1; }
+    .divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+    .rule-line { width: 28px; height: 1px; background: var(--olive); margin-top: 4px; }
+    .secthead { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 26px; background: var(--olive); color: var(--paper); border: 1px solid var(--olive); border-radius: 999px; font-size: .85rem; letter-spacing: .1em; font-weight: 500; transition: opacity .2s; }
+    .btn-primary:hover { opacity: .88; }
+    .btn-line { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: #06c755; color: #fff; border-radius: 999px; font-size: .85rem; letter-spacing: .06em; font-weight: 500; }
+
+    /* ── ページヒーロー ── */
+    .page-hero { position: relative; padding: 110px 22px 52px; border-bottom: 1px solid var(--line); overflow: hidden; background: var(--olive-tint); }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; }
+    .page-hero-en { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; color: var(--olive); text-transform: uppercase; margin-bottom: 14px; }
+    .page-hero-title { font-family: var(--serif); font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 500; margin-bottom: 14px; letter-spacing: .04em; }
+    .page-hero-lead { font-size: .92rem; color: var(--ink-soft); line-height: 2.1; }
+    .breadcrumb { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; color: var(--ink-mute); margin-top: 20px; }
+    .breadcrumb a { color: var(--olive); }
+
+    /* ── 代表セクション ── */
+    .lead-instructor { display: grid; grid-template-columns: 360px 1fr; gap: 44px; align-items: start; }
+    .lead-photo { position: relative; }
+    .lead-photo img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 8px; object-position: center 20%; }
+    .lead-photo-caption { font-family: var(--mono); font-size: .58rem; letter-spacing: .18em; color: var(--ink-mute); margin-top: 10px; text-align: center; }
+    .lead-info .eyebrow { color: var(--olive); }
+    .lead-name { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 500; line-height: 1.4; margin-bottom: 6px; letter-spacing: .04em; }
+    .lead-name-en { font-family: var(--italic); font-style: italic; font-size: .9rem; color: var(--olive-dark); margin-bottom: 14px; }
+    .lead-role { font-family: var(--serif); font-size: .92rem; color: var(--olive-dark); font-weight: 500; margin-bottom: 8px; }
+    .lead-qualif { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+    .lead-qualif span { display: inline-block; font-family: var(--mono); font-size: .56rem; letter-spacing: .1em; color: var(--olive-dark); background: var(--olive-soft); padding: 4px 11px; border-radius: 999px; }
+    .lead-bio { font-size: .86rem; color: var(--ink-soft); line-height: 2.1; }
+    .lead-bio p { margin-bottom: 14px; }
+    .lead-bio p:last-child { margin-bottom: 0; }
+
+    /* ── 講師グリッド ── */
+    .instructor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 24px; }
+    .instructor-card { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+    .instructor-photo, .instructor-photo-pending { width: 100%; aspect-ratio: 3/4; }
+    .instructor-photo { object-fit: cover; display: block; }
+    .instructor-photo-pending { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--olive-tint); border-bottom: 1.5px dashed var(--olive-soft); }
+    .photo-pending-icon { width: 32px; height: 32px; opacity: .35; }
+    .photo-pending-label { font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; color: var(--olive-dark); opacity: .7; text-align: center; line-height: 1.9; padding: 0 12px; }
+    .instructor-info { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+    .instructor-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; letter-spacing: .04em; margin-bottom: 4px; }
+    .instructor-name-jp { font-family: var(--mono); font-size: .58rem; letter-spacing: .18em; color: var(--ink-mute); margin-bottom: 10px; }
+    .instructor-role { font-family: var(--serif); font-size: .82rem; color: var(--olive-dark); margin-bottom: 8px; }
+    .instructor-qualif { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .instructor-qualif span { display: inline-block; font-family: var(--mono); font-size: .54rem; letter-spacing: .08em; color: var(--olive-dark); background: var(--olive-soft); padding: 3px 9px; border-radius: 999px; }
+    .instructor-bio { font-size: .8rem; color: var(--ink-soft); line-height: 2; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--paper-2); padding: 56px 20px; text-align: center; }
+    .cta-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; margin: 12px 0 8px; color: var(--ink); }
+    .cta-sub { font-size: .84rem; color: var(--ink-soft); margin-bottom: 28px; line-height: 2; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-direction: column; max-width: 320px; margin: 0 auto; }
+
+    /* ── フッター ── */
+    footer { background: var(--olive-dark); color: rgba(251,248,241,.65); padding: 40px 22px 32px; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+    .footer-logo { font-family: var(--italic); font-style: italic; font-weight: 500; font-size: 1.3rem; color: var(--paper); }
+    .footer-logo small { display: block; font-family: var(--mono); font-style: normal; font-size: .54rem; letter-spacing: .25em; color: rgba(251,248,241,.5); margin-top: 4px; }
+    .footer-links { display: flex; flex-direction: column; gap: 4px; text-align: right; }
+    .footer-links a { font-size: .72rem; color: rgba(251,248,241,.7); }
+    .footer-addr { margin-top: 24px; font-size: .72rem; opacity: .75; line-height: 2; }
+    .footer-meta { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(251,248,241,.15); display: flex; justify-content: space-between; font-family: var(--mono); font-size: .58rem; letter-spacing: .15em; opacity: .55; }
+
+    /* ── スマホ固定CTA ── */
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 150; padding: 10px 14px; background: rgba(251,248,241,.96); backdrop-filter: blur(6px); border-top: 1px solid var(--line); }
+    .sticky-btn { flex: 1; padding: 12px; text-align: center; border-radius: 999px; font-size: .8rem; letter-spacing: .06em; font-weight: 500; }
+    .sticky-btn-reserve { background: var(--olive); color: var(--paper); }
+    .sticky-btn-line { background: var(--paper); color: var(--olive-dark); border: 1px solid var(--olive); }
+
+    /* ── レスポンシブ ── */
+    @media (max-width: 900px) {
+      .lead-instructor { grid-template-columns: 1fr; gap: 28px; }
+      .lead-photo { max-width: 320px; margin: 0 auto; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav { position: fixed; top: 0; right: -100%; width: 72%; max-width: 260px; height: 100vh; background: var(--paper); padding: 68px 24px 24px; transition: right .3s; z-index: 200; overflow-y: auto; box-shadow: -8px 0 24px rgba(0,0,0,.08); }
+      .nav.open { right: 0; }
+      .nav-overlay { display: block; opacity: 0; pointer-events: none; transition: opacity .3s; }
+      .nav-overlay.open { opacity: 1; pointer-events: auto; }
+      .nav ul { flex-direction: column; gap: 0; }
+      .nav ul li { border-bottom: 1px solid var(--line); }
+      .nav a:not(.btn-nav) { display: block; padding: 14px 0; font-size: .92rem; }
+      .btn-nav { display: inline-block; margin: 16px 0 0; }
+      body { padding-bottom: 72px; }
+      .sticky-cta { display: flex; gap: 10px; }
+      .instructor-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      Studio Liko
+      <small>YOGA · BABY SIGN · MEINOHAMA</small>
+    </a>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="index.html#yoga">ヨガ</a></li>
+        <li><a href="index.html#babysign">ベビーサイン</a></li>
+        <li><a href="guide.html">初めての方へ</a></li>
+        <li><a href="index.html#voices">受講者の声</a></li>
+        <li><a href="instructors.html" class="active">講師紹介</a></li>
+        <li><a href="index.html#faq">よくある質問</a></li>
+        <li><a href="index.html#contact" class="btn-nav">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ページヒーロー -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-en">Instructors</p>
+    <h1 class="page-hero-title">講師紹介</h1>
+    <p class="page-hero-lead">
+      Studio Likoには、それぞれの経験と視点を持った講師が集まっています。<br>
+      あなたに合うペースで、丁寧にご案内します。
+    </p>
+    <p class="breadcrumb"><a href="index.html">トップ</a> › 講師紹介</p>
+  </div>
+</div>
+
+<!-- ===== 代表 ===== -->
+<section class="section bg-white">
+  <div class="container">
+    <div class="lead-instructor">
+      <div>
+        <img src="img/liko-story.jpg" alt="岩本理子" class="lead-photo"
+             style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:8px; object-position:center 20%;">
+        <p class="lead-photo-caption">RIKO IWAMOTO · FOUNDER</p>
+      </div>
+      <div class="lead-info">
+        <p class="eyebrow">Founder</p>
+        <h2 class="lead-name">岩本 理子</h2>
+        <p class="lead-name-en">Riko Iwamoto</p>
+        <p class="lead-role">代表 / ヨガ・ベビーサイン講師</p>
+        <div class="lead-qualif">
+          <span>RYT500</span>
+          <span>ベビーサイン協会認定マスター</span>
+          <span>中医養生ヨガ</span>
+          <span>陰ヨガ</span>
+          <span>マインドフルネス</span>
+        </div>
+        <div class="lead-bio">
+          <p>ヨガに出会ったのは、二人目妊娠中のマタニティヨガでした。ヨガをすると自然にホッとして体がゆるんでいくことが不思議で、それからすぐに夢中になりました。</p>
+          <p>運動が苦手な私でも、ヨガはコツコツ自分自身と向き合うことができるもの。心のバランスがとれる必須のものとなり、人生の中で嫌なことがあった時でも、ヨガがあったからこそ乗り越えられたと感じています。</p>
+          <p>2012年ごろ、お子様連れOKのヨガ教室を始めました。RYT200・RYT500取得後、毎日プラクティスとクラスにてヨガを指導。ヨガ哲学、解剖学、アーユルヴェーダ、中医学、呼吸法、陰ヨガ、中医養生ヨガ、ベビーヨガ、シニアヨガ、マインドフルネスなど、生き方としてのヨガを伝えています。</p>
+          <p>みんなの輪が広がり、ヨガのシェアをしていきたいという想いから、コロナ禍の中スタジオを立ち上げました。喜びと共にヨガを伝えられるよう、日々探究中です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== その他講師 ===== -->
+<section class="section bg-warm">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">Instructors</p>
+      <h2 class="sec-title">講師一覧</h2>
+      <div class="rule-line"></div>
+    </div>
+    <p class="sec-lead">それぞれの強みと視点を持った講師が、あなたのペースに合わせてご案内します。</p>
+
+    <div class="instructor-grid">
+
+      <!-- KAZUE -->
+      <div class="instructor-card">
+        <div class="instructor-photo-pending">
+          <svg class="photo-pending-icon" viewBox="0 0 24 24" fill="none" stroke="#4a6b50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <p class="photo-pending-label">KAZUEさん<br>写真準備中</p>
+        </div>
+        <div class="instructor-info">
+          <h3 class="instructor-name">KAZUE</h3>
+          <p class="instructor-name-jp">KAZUE</p>
+          <p class="instructor-role">ヨガ講師</p>
+          <div class="instructor-qualif">
+            <span>ヨガ全般</span>
+          </div>
+          <p class="instructor-bio">マタニティヨガとの出会いがきっかけ。産後ほぼ一人で育児をしながら、リフレッシュ目的でヨガを再開しました。短期集中型の自分が続けられている理由は、ヨガという大枠の中で、骨格・筋・呼吸など、学びを深め続けられるから。学んだことをクラスに活かしています。</p>
+        </div>
+      </div>
+
+      <!-- MANA -->
+      <div class="instructor-card">
+        <div class="instructor-photo-pending">
+          <svg class="photo-pending-icon" viewBox="0 0 24 24" fill="none" stroke="#4a6b50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <p class="photo-pending-label">MANAさん<br>写真準備中</p>
+        </div>
+        <div class="instructor-info">
+          <h3 class="instructor-name">MANA</h3>
+          <p class="instructor-name-jp">MANA</p>
+          <p class="instructor-role">ヨガ講師</p>
+          <div class="instructor-qualif">
+            <span>ヨガ全般</span>
+          </div>
+          <p class="instructor-bio">日頃頑張っている皆様にちょっと立ち止まって、ふーっとリラックスできる空間を作れたらと考えています。いくつになっても楽しめるよう、年齢や経験を問わず、ゆったりとした時間をご案内します。</p>
+        </div>
+      </div>
+
+      <!-- HIROMI -->
+      <div class="instructor-card">
+        <div class="instructor-photo-pending">
+          <svg class="photo-pending-icon" viewBox="0 0 24 24" fill="none" stroke="#4a6b50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <p class="photo-pending-label">HIROMIさん<br>写真準備中</p>
+        </div>
+        <div class="instructor-info">
+          <h3 class="instructor-name">HIROMI</h3>
+          <p class="instructor-name-jp">HIROMI</p>
+          <p class="instructor-role">ヨガ講師</p>
+          <div class="instructor-qualif">
+            <span>RYT200</span>
+          </div>
+          <p class="instructor-bio">10数年前にヨガを始め、学びを深める中でヨガの仕事に携わるようになりました。呼吸と共に動くことで、心身が整っていく感覚を大切に味わうこと——その感覚を一緒に体験しながら、日常生活が少しずつ穏やかになるようサポートしています。</p>
+        </div>
+      </div>
+
+      <!-- AYUMI -->
+      <div class="instructor-card">
+        <div class="instructor-photo-pending">
+          <svg class="photo-pending-icon" viewBox="0 0 24 24" fill="none" stroke="#4a6b50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <p class="photo-pending-label">AYUMIさん<br>写真準備中</p>
+        </div>
+        <div class="instructor-info">
+          <h3 class="instructor-name">AYUMI</h3>
+          <p class="instructor-name-jp">AYUMI</p>
+          <p class="instructor-role">ヨガ・ピラティス講師</p>
+          <div class="instructor-qualif">
+            <span>RYT200</span>
+            <span>STOTT PILATES</span>
+          </div>
+          <p class="instructor-bio">産後太り解消のためジムに通い始めたことをきっかけに、50歳手前で資格取得にチャレンジしました。心も身体も健康的にいられるよう皆様のお役に立てたらと考え、体と心の繋がりを大切に、丁寧にご案内します。</p>
+        </div>
+      </div>
+
+      <!-- SHINOBU -->
+      <div class="instructor-card">
+        <div class="instructor-photo-pending">
+          <svg class="photo-pending-icon" viewBox="0 0 24 24" fill="none" stroke="#4a6b50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <p class="photo-pending-label">SHINOBUさん<br>写真準備中</p>
+        </div>
+        <div class="instructor-info">
+          <h3 class="instructor-name">SHINOBU</h3>
+          <p class="instructor-name-jp">SHINOBU</p>
+          <p class="instructor-role">ヨガ講師</p>
+          <div class="instructor-qualif">
+            <span>ヨガ全般</span>
+          </div>
+          <p class="instructor-bio">肩こりに悩んでいた時に友人から誘われてヨガを始めました。息子2人と娘1人の母。呼吸とともに動くヨガの心地よさに、心も軽くなった経験から、忙しい日常で心身を軽くなめらかにするサポートを心がけています。</p>
+        </div>
+      </div>
+
+      <!-- NANAMI -->
+      <div class="instructor-card">
+        <div class="instructor-photo-pending">
+          <svg class="photo-pending-icon" viewBox="0 0 24 24" fill="none" stroke="#4a6b50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          <p class="photo-pending-label">NANAMIさん<br>写真準備中</p>
+        </div>
+        <div class="instructor-info">
+          <h3 class="instructor-name">NANAMI</h3>
+          <p class="instructor-name-jp">NANAMI</p>
+          <p class="instructor-role">ヨガ講師</p>
+          <div class="instructor-qualif">
+            <span>理学療法士</span>
+          </div>
+          <p class="instructor-bio">理学療法士として8年勤務した経験を活かし、ヨガインストラクターとなりました。正しい体の使い方で心地よい動作へと誘導し、心と体をすっきり整えることを目指しています。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <p class="eyebrow">RESERVATION</p>
+  <h2 class="cta-title">気になる先生がいれば、ぜひ体験を</h2>
+  <p class="cta-sub">「この先生のクラスを受けたい」「どのクラスか迷っている」<br>どんなご相談でもお気軽にお声がけください。</p>
+  <div class="cta-btns">
+    <a href="https://page.line.me/ttp2821f" class="btn-line">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.86 1.44 5.4 3.7 7.1L5 22l4.2-1.4C10.4 21 11.2 21 12 21c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+      LINEでお気軽に相談
+    </a>
+    <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="btn-primary" target="_blank" rel="noopener">ご予約フォームから予約する →</a>
+  </div>
+  <p style="margin-top:20px;font-family:var(--mono);font-size:.64rem;color:var(--ink-mute);letter-spacing:.1em;">
+    福岡市西区愛宕南2丁目12-12（姪浜エリア）
+  </p>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      Studio Liko
+      <small>MEINOHAMA · FUKUOKA</small>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#yoga">ヨガ</a>
+      <a href="index.html#babysign">ベビーサイン</a>
+      <a href="guide.html">初めての方へ</a>
+      <a href="instructors.html">講師紹介</a>
+      <a href="index.html#faq">よくある質問</a>
+    </div>
+  </div>
+  <p class="footer-addr">
+    福岡市西区愛宕南2丁目12-12（姪浜エリア）<br>
+    完全予約制 ／ 定休日：不定休
+  </p>
+  <div class="footer-meta">
+    <span>© 2024 STUDIO LIKO</span>
+    <span>IG · LINE</span>
+  </div>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="sticky-btn sticky-btn-reserve" target="_blank">体験を予約する</a>
+  <a href="https://page.line.me/ttp2821f" class="sticky-btn sticky-btn-line">LINEで相談</a>
+</div>
+
+<script>
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  const overlay = document.getElementById('navOverlay');
+  function toggleNav() { nav.classList.toggle('open'); overlay.classList.toggle('open'); }
+  ham.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', toggleNav);
+
+  let lastY = 0;
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80) { header.classList.toggle('hidden', y > lastY); }
+    else { header.classList.remove('hidden'); }
+    lastY = y;
+  }, { passive: true });
+</script>
+</body>
+</html>
