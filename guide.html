@@ -48,6 +48,8 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .logo { font-family: var(--italic); font-style: italic; font-weight: 500; font-size: 1.3rem; line-height: 1.1; }
+    .back-link { font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; transition: background .2s; }
+    .back-link:hover { background: var(--olive-tint); }
     .logo small { display: block; font-family: var(--mono); font-style: normal; font-size: .56rem; letter-spacing: .2em; color: var(--ink-mute); margin-top: 3px; }
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
     .hamburger span { display: block; width: 22px; height: 1.2px; background: var(--ink); transition: all .3s; }
@@ -230,23 +232,9 @@
       Studio Liko
       <small>YOGA · BABY SIGN · MEINOHAMA</small>
     </a>
-    <nav class="nav" id="nav">
-      <ul>
-        <li><a href="index.html#yoga">ヨガ</a></li>
-        <li><a href="index.html#babysign">ベビーサイン</a></li>
-        <li><a href="guide.html" class="active">初めての方へ</a></li>
-        <li><a href="index.html#voices">受講者の声</a></li>
-        <li><a href="index.html#instructor">プロフィール</a></li>
-        <li><a href="index.html#faq">よくある質問</a></li>
-        <li><a href="index.html#contact" class="btn-nav">お問い合わせ</a></li>
-      </ul>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="index.html" class="back-link">← トップへ戻る</a>
   </div>
 </header>
-<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- ページヒーロー -->
 <div class="page-hero">
@@ -649,13 +637,6 @@
 </div>
 
 <script>
-  const ham = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
-  const overlay = document.getElementById('navOverlay');
-  function toggleNav() { nav.classList.toggle('open'); overlay.classList.toggle('open'); }
-  ham.addEventListener('click', toggleNav);
-  overlay.addEventListener('click', toggleNav);
-
   let lastY = 0;
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
