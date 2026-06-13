@@ -83,11 +83,16 @@
     .breadcrumb { font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; color: var(--ink-mute); margin-top: 28px; }
     .breadcrumb a { color: var(--olive-dark); }
     @media (max-width: 768px) {
-      .page-hero { min-height: 680px; }
-      .page-hero-bg img { object-position: center 50%; }
-      .page-hero-overlay { background: linear-gradient(to bottom, rgba(255,255,255,.85) 0%, rgba(255,255,255,.55) 25%, rgba(255,255,255,0) 50%); }
-      .page-hero-inner { padding: 108px 22px 36px 22px; display: block; text-align: right; min-height: auto; }
+      .page-hero { min-height: 820px; background: var(--paper); }
+      .page-hero-bg { inset: 360px 0 0 0; }
+      .page-hero-bg img { object-position: center 30%; }
+      .page-hero-overlay { display: none; }
+      .page-hero-inner { padding: 100px 22px 24px; display: block; text-align: right; min-height: auto; }
       .page-hero-content { max-width: 100%; }
+      .page-hero-en { font-size: 1.8rem; margin-bottom: 16px; }
+      .page-hero-catch { font-size: 1.25rem; line-height: 2; margin-bottom: 20px; }
+      .page-hero-sub { font-size: .85rem; line-height: 2; }
+      .breadcrumb { margin-top: 18px; }
     }
 
     /* ── タグ＋CTA バー ── */
