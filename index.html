@@ -227,21 +227,6 @@
     /* ── WELCOME ── */
     .welcome-section { padding-top: 100px; }
     .chips-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
-    /* ── クラス紹介サマリ 2カード ── */
-    .lesson-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
-    .lesson-summary-card { padding: 32px 28px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; border-left: 3px solid var(--olive); }
-    .lesson-summary-card.bs { border-left-color: var(--bs-deep); }
-    .lesson-summary-en { font-family: var(--mono); font-size: .6rem; letter-spacing: .25em; color: var(--olive); margin-bottom: 6px; }
-    .lesson-summary-card.bs .lesson-summary-en { color: var(--bs-deep); }
-    .lesson-summary-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: 18px; letter-spacing: .04em; }
-    .lesson-summary-list { list-style: none; padding: 0; margin-bottom: 22px; }
-    .lesson-summary-list li { padding: 9px 0; font-size: .86rem; color: var(--ink-soft); border-bottom: 1px dashed var(--line); }
-    .lesson-summary-list li:last-child { border-bottom: none; }
-    @media (max-width: 768px) {
-      .lesson-summary-grid { grid-template-columns: 1fr; gap: 14px; }
-      .lesson-summary-card { padding: 24px 20px; }
-    }
-
     /* ── 安心ポイント 8グリッド ── */
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
     .feature-card { text-align: center; padding: 28px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; transition: border-color .2s, transform .2s; }
@@ -705,48 +690,6 @@
 
 <hr class="divider">
 
-<!-- ===== クラス紹介 ===== -->
-<section class="section bg-white" id="lesson">
-  <div class="container">
-    <div class="secthead">
-      <p class="eyebrow">Lessons</p>
-      <h2 class="sec-title">クラス内容</h2>
-      <div class="rule-line"></div>
-    </div>
-    <p class="sec-lead">
-      ヨガとベビーサイン、それぞれに複数のクラスをご用意しています。<br>
-      お子さまの月齢・ご自身の状態に合わせてお選びいただけます。
-    </p>
-    <div class="lesson-summary-grid">
-      <div class="lesson-summary-card">
-        <p class="lesson-summary-en">YOGA</p>
-        <h3 class="lesson-summary-title">ヨガクラス</h3>
-        <ul class="lesson-summary-list">
-          <li>通常ヨガクラス</li>
-          <li>パーソナルヨガ</li>
-          <li>マタニティ・産後ヨガ</li>
-          <li>キッズヨガ</li>
-          <li>オンラインヨガ</li>
-        </ul>
-        <a href="yoga.html" class="btn-text">詳しく見る →</a>
-      </div>
-      <div class="lesson-summary-card bs">
-        <p class="lesson-summary-en">BABY SIGN</p>
-        <h3 class="lesson-summary-title">ベビーサイン教室</h3>
-        <ul class="lesson-summary-list">
-          <li>体験会</li>
-          <li>ねんねコース</li>
-          <li>おすわり・ハイハイコース</li>
-          <li>ねんね＋おすわり・ハイハイ統合</li>
-        </ul>
-        <a href="babysign.html" class="btn-text">詳しく見る →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
 <!-- ===== 料金 ===== -->
 <section class="section" id="price">
   <div class="container">
@@ -755,6 +698,10 @@
       <h2 class="sec-title">料金</h2>
       <div class="rule-line"></div>
     </div>
+    <p class="sec-lead">
+      ヨガ・ベビーサイン、それぞれ体験から始められます。<br>
+      まずは気になるクラスの雰囲気を、体験で知っていただけます。
+    </p>
     <div class="price-grid">
       <div class="price-card">
         <div class="price-card-head yoga">
