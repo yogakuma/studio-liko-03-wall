@@ -850,28 +850,28 @@
         </div>
         <p class="voice-text">「自分に大切なものを見つめて補充できる、かかせない場所と時間」</p>
       </div>
-      <div class="voice-card bs voice-hidden">
+      <div class="voice-card bs">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--bs-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--bs-deep);">準備中</div>
           <p class="voice-meta">西区 Y さま／ベビーサイン教室</p>
         </div>
         <p class="voice-text">「息子の見えてる世界を垣間見れました！」</p>
       </div>
-      <div class="voice-card voice-hidden">
+      <div class="voice-card">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--olive-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--olive-dark);">準備中</div>
           <p class="voice-meta">K さま／ヨガ教室</p>
         </div>
         <p class="voice-text">「ヨガを続けて心身共に健康になっていきたいです」</p>
       </div>
-      <div class="voice-card bs voice-hidden">
+      <div class="voice-card bs">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--bs-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--bs-deep);">準備中</div>
           <p class="voice-meta">早良区 A さま／ベビーサイン教室</p>
         </div>
         <p class="voice-text">「サインのおかげでとても楽しく初めての育児ができました！」</p>
       </div>
-      <div class="voice-card bs voice-hidden">
+      <div class="voice-card bs">
         <div class="voice-top">
           <div class="voice-img" style="background:var(--bs-soft);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;color:var(--bs-deep);">準備中</div>
           <p class="voice-meta">西区 M さま／ベビーサイン教室</p>
@@ -880,9 +880,6 @@
       </div>
     </div>
     <div class="voices-toggle-wrap">
-      <button class="voices-toggle" id="voicesToggle" type="button" aria-expanded="false">もっと見る →</button>
-    </div>
-    <div style="margin-top:14px;text-align:center;">
       <a href="voices.html" class="btn-text">通われた方すべての声を読む →</a>
     </div>
   </div>
@@ -1099,17 +1096,6 @@
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
   }, 5000);
-
-  // 受講者の声 もっと見る／閉じる
-  const voicesToggle = document.getElementById('voicesToggle');
-  const voicesList = document.querySelector('#voices .voices-list');
-  if (voicesToggle && voicesList) {
-    voicesToggle.addEventListener('click', () => {
-      const expanded = voicesList.classList.toggle('expanded');
-      voicesToggle.textContent = expanded ? '閉じる ↑' : 'もっと見る →';
-      voicesToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-    });
-  }
 
   let lastY = 0;
   const header = document.getElementById('header');
