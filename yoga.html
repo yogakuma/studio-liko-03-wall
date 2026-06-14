@@ -155,6 +155,16 @@
     .photo-interlude-text { text-align: center; color: var(--paper); padding: 0 20px; }
     .photo-interlude-copy { font-family: var(--serif); font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 500; line-height: 1.8; letter-spacing: .08em; }
 
+    /* ── プルクオート（生徒さまの声・抜粋） ── */
+    .pull-quote { padding: 64px 28px; background: var(--paper-2); text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .pull-quote-mark { font-family: var(--italic); font-style: italic; font-size: 4rem; line-height: 0.5; color: var(--olive); opacity: .3; margin-bottom: 22px; height: 1.6rem; }
+    .pull-quote-text { font-family: var(--serif); font-size: clamp(1rem, 2.4vw, 1.18rem); font-weight: 500; line-height: 2; letter-spacing: .04em; color: var(--ink); margin-bottom: 22px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .pull-quote-attr { font-family: var(--mono); font-size: .6rem; letter-spacing: .2em; color: var(--ink-mute); text-transform: uppercase; }
+    @media (max-width: 768px) {
+      .pull-quote { padding: 48px 22px; }
+      .pull-quote-text { font-size: .98rem; line-height: 1.95; }
+    }
+
     /* ── クラスセクション ── */
     .classes-group { margin-top: 36px; }
     .classes-group + .classes-group { margin-top: 44px; }
@@ -672,15 +682,11 @@
   </div>
 </section>
 
-<!-- フォトインタールード（Lessons→Price） -->
-<div class="photo-interlude">
-  <img src="img/studio-mat.jpg" alt="Studio Liko マットを敷く" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="object-position: center 50%;">
-  <div class="photo-ph-wide warm" style="display:none;">STUDIO MAT</div>
-  <div class="photo-interlude-overlay">
-    <div class="photo-interlude-text">
-      <p class="photo-interlude-copy">マットを敷いて、深く呼吸する。<br>それだけで、整っていく時間です。</p>
-    </div>
-  </div>
+<!-- プルクオート（Lessons→Price） -->
+<div class="pull-quote">
+  <div class="pull-quote-mark">"</div>
+  <p class="pull-quote-text">自分に大切なものを見つめて補充できる、<br>かかせない場所と時間。</p>
+  <p class="pull-quote-attr">— H さま ／ ヨガ生徒</p>
 </div>
 
 <!-- ===== 料金一覧 ===== -->
@@ -874,15 +880,11 @@
   </div>
 </section>
 
-<!-- フォトインタールード（Price→Flow） -->
-<div class="photo-interlude">
-  <img src="img/yoga-pose-1.jpg" alt="Studio Liko ヨガポーズ" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="object-position: center 35%;">
-  <div class="photo-ph-wide warm" style="display:none;">YOGA POSE</div>
-  <div class="photo-interlude-overlay">
-    <div class="photo-interlude-text">
-      <p class="photo-interlude-copy">ひとつのポーズに、<br>ひとつの呼吸を。</p>
-    </div>
-  </div>
+<!-- プルクオート（Price→Flow） -->
+<div class="pull-quote">
+  <div class="pull-quote-mark">"</div>
+  <p class="pull-quote-text">ヨガを続けて、心身共に<br>健康になっていきたいです。</p>
+  <p class="pull-quote-attr">— K さま ／ ヨガ生徒</p>
 </div>
 
 <!-- ===== 体験の流れ ===== -->
