@@ -176,14 +176,18 @@
     .photo-interlude-text { text-align: center; color: var(--paper); padding: 0 20px; }
     .photo-interlude-copy { font-family: var(--serif); font-size: clamp(1rem, 2.5vw, 1.4rem); font-weight: 500; line-height: 1.8; letter-spacing: .08em; }
 
-    /* ── プルクオート（生徒さまの声・抜粋） ── */
-    .pull-quote { padding: 64px 28px; background: var(--paper-2); text-align: center; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .pull-quote-mark { font-family: var(--italic); font-style: italic; font-size: 4rem; line-height: 0.5; color: var(--bs); opacity: .3; margin-bottom: 22px; height: 1.6rem; }
-    .pull-quote-text { font-family: var(--serif); font-size: clamp(1rem, 2.4vw, 1.18rem); font-weight: 500; line-height: 2; letter-spacing: .04em; color: var(--ink); margin-bottom: 22px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .pull-quote-attr { font-family: var(--mono); font-size: .6rem; letter-spacing: .2em; color: var(--ink-mute); text-transform: uppercase; }
+    /* ── Studio Atmosphere ギャラリー ── */
+    .bs-gallery { padding: 72px 0; background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .bs-gallery .eyebrow { text-align: center; }
+    .bs-gallery-title { font-family: var(--serif); font-size: clamp(1.18rem, 2.6vw, 1.45rem); font-weight: 500; text-align: center; letter-spacing: .06em; line-height: 1.6; margin-bottom: 32px; color: var(--ink); }
+    .bs-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .bs-gallery-item { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; background: var(--paper); }
+    .bs-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 768px) {
-      .pull-quote { padding: 48px 22px; }
-      .pull-quote-text { font-size: .98rem; line-height: 1.95; }
+      .bs-gallery { padding: 48px 0; }
+      .bs-gallery-title { font-size: 1.1rem; margin-bottom: 22px; }
+      .bs-gallery-grid { grid-template-columns: 1fr; gap: 12px; }
+      .bs-gallery-item { aspect-ratio: 16 / 11; }
     }
 
     /* ── クラスセクション ── */
@@ -613,7 +617,7 @@
         </div>
       </div>
       <div class="why-photo">
-        <img src="img/babysign-class.jpg" alt="Studio Liko ベビーサインクラス" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="object-position: center 35%;">
+        <img src="img/bs-reading.jpg" alt="Studio Liko ベビーサインクラス ― 絵本での導入" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" style="object-position: center 35%;">
         <div class="photo-ph warm" style="display:none;border-radius:8px;">CLASS · BABY SIGN</div>
       </div>
     </div>
@@ -694,12 +698,24 @@
   </div>
 </section>
 
-<!-- プルクオート（Lessons→Price） -->
-<div class="pull-quote">
-  <div class="pull-quote-mark">"</div>
-  <p class="pull-quote-text">今しかないこの時期に、<br>ベビーサインに出逢えて本当に良かった。</p>
-  <p class="pull-quote-attr">— F さま ／ 城南区・ベビーサイン教室</p>
-</div>
+<!-- ===== Studio Atmosphere（ギャラリー） ===== -->
+<section class="bs-gallery">
+  <div class="container">
+    <p class="eyebrow">Atmosphere</p>
+    <h2 class="bs-gallery-title">教室の空気感</h2>
+    <div class="bs-gallery-grid">
+      <div class="bs-gallery-item">
+        <img src="img/bs-blocks.jpg" alt="ベビーサイン教室の様子 ― 先生と赤ちゃんが教材で遊ぶ場面" loading="lazy">
+      </div>
+      <div class="bs-gallery-item">
+        <img src="img/bs-sign.jpg" alt="ベビーサインの絵カードに集まる子どもたち" loading="lazy">
+      </div>
+      <div class="bs-gallery-item">
+        <img src="img/bs-parachute.jpg" alt="親子で楽しむパラシュート遊び" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== 料金一覧 ===== -->
 <section class="section bg-warm" id="price">
@@ -806,13 +822,6 @@
     </p>
   </div>
 </section>
-
-<!-- プルクオート（Price→Flow） -->
-<div class="pull-quote">
-  <div class="pull-quote-mark">"</div>
-  <p class="pull-quote-text">息子の見えてる世界を、<br>垣間見ることができました。</p>
-  <p class="pull-quote-attr">— Y さま ／ 西区・ベビーサイン教室</p>
-</div>
 
 <!-- ===== 体験の流れ ===== -->
 <section class="section bg-white">
