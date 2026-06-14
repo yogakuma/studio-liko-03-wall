@@ -227,6 +227,36 @@
     /* ── WELCOME ── */
     .welcome-section { padding-top: 100px; }
     .chips-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    /* ── クラス紹介サマリ 2カード ── */
+    .lesson-summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+    .lesson-summary-card { padding: 32px 28px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; border-left: 3px solid var(--olive); }
+    .lesson-summary-card.bs { border-left-color: var(--bs-deep); }
+    .lesson-summary-en { font-family: var(--mono); font-size: .6rem; letter-spacing: .25em; color: var(--olive); margin-bottom: 6px; }
+    .lesson-summary-card.bs .lesson-summary-en { color: var(--bs-deep); }
+    .lesson-summary-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: 18px; letter-spacing: .04em; }
+    .lesson-summary-list { list-style: none; padding: 0; margin-bottom: 22px; }
+    .lesson-summary-list li { padding: 9px 0; font-size: .86rem; color: var(--ink-soft); border-bottom: 1px dashed var(--line); }
+    .lesson-summary-list li:last-child { border-bottom: none; }
+    @media (max-width: 768px) {
+      .lesson-summary-grid { grid-template-columns: 1fr; gap: 14px; }
+      .lesson-summary-card { padding: 24px 20px; }
+    }
+
+    /* ── 安心ポイント 8グリッド ── */
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+    .feature-card { text-align: center; padding: 28px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; transition: border-color .2s, transform .2s; }
+    .feature-card:hover { border-color: var(--olive); transform: translateY(-2px); }
+    .feature-icon { display: flex; justify-content: center; margin-bottom: 14px; color: var(--olive); }
+    .feature-icon svg { width: 30px; height: 30px; }
+    .feature-title { font-family: var(--serif); font-size: .96rem; font-weight: 500; margin-bottom: 6px; letter-spacing: .04em; color: var(--ink); }
+    .feature-sub { font-size: .72rem; color: var(--ink-mute); line-height: 1.7; letter-spacing: .02em; }
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 28px; }
+      .feature-card { padding: 22px 12px; }
+      .feature-icon svg { width: 26px; height: 26px; }
+      .feature-title { font-size: .88rem; }
+      .feature-sub { font-size: .68rem; }
+    }
 
     /* ── STUDIO CONCEPT ── */
     .concept-num-row { display: flex; gap: 18px; align-items: baseline; margin-bottom: 14px; }
@@ -627,34 +657,89 @@
       深く息をして、心を整える。<br>
       ヨガとベビーサイン、ふたつの教室をここで。
     </p>
-    <div class="chips-row">
-      <span class="chip chip-olive">少人数制（最大7名）</span>
-      <span class="chip chip-olive">完全予約制</span>
-      <span class="chip chip-olive">はじめての方歓迎</span>
-      <span class="chip chip-olive">50代・60代歓迎</span>
-    </div>
-    <div style="margin-top:20px;">
-      <a href="#first-time" class="btn-text">初めての方へ →</a>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14 19c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5"/></svg></div>
+        <h3 class="feature-title">少人数制</h3>
+        <p class="feature-sub">最大7名でていねいに</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 6 8 6 13a6 6 0 0 0 12 0c0-5-6-11-6-11z"/><path d="M12 6v8"/></svg></div>
+        <h3 class="feature-title">常温ヨガ</h3>
+        <p class="feature-sub">無理に汗をかかない</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3.5"/><line x1="12" y1="2.5" x2="12" y2="4.5"/><line x1="3.5" y1="10" x2="5.5" y2="10"/><line x1="18.5" y1="10" x2="20.5" y2="10"/><line x1="5.6" y1="4.6" x2="7" y2="6"/><line x1="17" y1="6" x2="18.4" y2="4.6"/><path d="M4 18h16M4 21h16"/></svg></div>
+        <h3 class="feature-title">床暖房あり</h3>
+        <p class="feature-sub">足元からあたたかく</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 17V8h4a3 3 0 0 1 0 6H9"/></svg></div>
+        <h3 class="feature-title">駐車場あり</h3>
+        <p class="feature-sub">お車でもお越しいただけます</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M6 15c0-4 3-7 6-7s6 3 6 7"/><path d="M9 8c0-2 1.5-4 3-4s3 2 3 4"/></svg></div>
+        <h3 class="feature-title">初心者歓迎</h3>
+        <p class="feature-sub">はじめての方が一番多い</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r=".7" fill="currentColor"/><circle cx="15" cy="10" r=".7" fill="currentColor"/></svg></div>
+        <h3 class="feature-title">シニア歓迎</h3>
+        <p class="feature-sub">50代・60代の方も多数</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-7 11-7 11"/></svg></div>
+        <h3 class="feature-title">マタニティ・産後対応</h3>
+        <p class="feature-sub">妊娠中・産後も無理なく</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+        <h3 class="feature-title">ヨガとベビーサインの両方に対応</h3>
+        <p class="feature-sub">親子で通える教室</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Likoについて ===== -->
-<section class="section" style="background:var(--olive-tint);">
-  <div class="container" style="max-width:860px;">
-    <div class="liko-layout">
-      <img src="img/liko-story.jpg" alt="Likoの由来" loading="lazy" class="liko-img">
-      <div class="liko-text">
-        <p class="eyebrow">ABOUT THE NAME</p>
-        <p style="font-family:var(--italic);font-style:italic;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--olive);margin:12px 0 20px;letter-spacing:.06em;">Liko</p>
-        <div class="liko-body">
-          <p>ハワイ語で「新芽・若葉・芽吹き・輝き」を意味する言葉。</p>
-          <p>子どもたちの名前の頭文字からとって生まれた、大切な名前です。つぼみだった子どもたちが光り輝いて、若々しい緑になっていきますようにと、願いを込めました。</p>
-          <p>小さなつぼみが若葉になり、やがて花を咲かせるように。親子の成長を、あたたかく見守る場所でありたいという想いが込められています。</p>
-        </div>
-        <p style="font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;color:var(--olive);opacity:.7;">
-          FUKUOKA · MEINOHAMA · STUDIO LIKO
-        </p>
+<hr class="divider">
+
+<!-- ===== クラス紹介 ===== -->
+<section class="section bg-white" id="lesson">
+  <div class="container">
+    <div class="secthead">
+      <p class="eyebrow">Lessons</p>
+      <h2 class="sec-title">クラス内容</h2>
+      <div class="rule-line"></div>
+    </div>
+    <p class="sec-lead">
+      ヨガとベビーサイン、それぞれに複数のクラスをご用意しています。<br>
+      お子さまの月齢・ご自身の状態に合わせてお選びいただけます。
+    </p>
+    <div class="lesson-summary-grid">
+      <div class="lesson-summary-card">
+        <p class="lesson-summary-en">YOGA</p>
+        <h3 class="lesson-summary-title">ヨガクラス</h3>
+        <ul class="lesson-summary-list">
+          <li>通常ヨガクラス</li>
+          <li>パーソナルヨガ</li>
+          <li>マタニティ・産後ヨガ</li>
+          <li>キッズヨガ</li>
+          <li>オンラインヨガ</li>
+        </ul>
+        <a href="yoga.html" class="btn-text">詳しく見る →</a>
+      </div>
+      <div class="lesson-summary-card bs">
+        <p class="lesson-summary-en">BABY SIGN</p>
+        <h3 class="lesson-summary-title">ベビーサイン教室</h3>
+        <ul class="lesson-summary-list">
+          <li>体験会</li>
+          <li>ねんねコース</li>
+          <li>おすわり・ハイハイコース</li>
+          <li>ねんね＋おすわり・ハイハイ統合</li>
+        </ul>
+        <a href="babysign.html" class="btn-text">詳しく見る →</a>
       </div>
     </div>
   </div>
@@ -869,19 +954,26 @@
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="cta-section" id="contact">
-  <p class="eyebrow">CONTACT</p>
-  <h2 class="cta-title">まずは、お気軽に<br class="sp-br">ご連絡ください。</h2>
-  <p class="cta-sub">「気になるだけ」「どのクラスか迷っている」<br class="sp-br">で大丈夫です。一緒に確認しましょう。</p>
-  <div class="cta-btns">
-    <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="btn-primary" target="_blank" rel="noopener">
-      体験レッスンを予約する →
-    </a>
-    <a href="https://page.line.me/ttp2821f" class="btn-line">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.86 1.44 5.4 3.7 7.1L5 22l4.2-1.4C10.4 21 11.2 21 12 21c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
-      LINEで相談してみる
-    </a>
+<hr class="divider">
+
+<!-- ===== Likoについて ===== -->
+<section class="section" style="background:var(--olive-tint);">
+  <div class="container" style="max-width:860px;">
+    <div class="liko-layout">
+      <img src="img/liko-story.jpg" alt="Likoの由来" loading="lazy" class="liko-img">
+      <div class="liko-text">
+        <p class="eyebrow">ABOUT THE NAME</p>
+        <p style="font-family:var(--italic);font-style:italic;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--olive);margin:12px 0 20px;letter-spacing:.06em;">Liko</p>
+        <div class="liko-body">
+          <p>ハワイ語で「新芽・若葉・芽吹き・輝き」を意味する言葉。</p>
+          <p>子どもたちの名前の頭文字からとって生まれた、大切な名前です。つぼみだった子どもたちが光り輝いて、若々しい緑になっていきますようにと、願いを込めました。</p>
+          <p>小さなつぼみが若葉になり、やがて花を咲かせるように。親子の成長を、あたたかく見守る場所でありたいという想いが込められています。</p>
+        </div>
+        <p style="font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;color:var(--olive);opacity:.7;">
+          STUDIO LIKO — MEINOHAMA, FUKUOKA
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -913,6 +1005,22 @@
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+  <p class="eyebrow">CONTACT</p>
+  <h2 class="cta-title">まずは、お気軽に<br class="sp-br">ご連絡ください。</h2>
+  <p class="cta-sub">「気になるだけ」「どのクラスか迷っている」<br class="sp-br">で大丈夫です。一緒に確認しましょう。</p>
+  <div class="cta-btns">
+    <a href="https://naturalroom.official.jp/%e3%81%94%e4%ba%88%e7%b4%84/" class="btn-primary" target="_blank" rel="noopener">
+      体験レッスンを予約する →
+    </a>
+    <a href="https://page.line.me/ttp2821f" class="btn-line">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.86 1.44 5.4 3.7 7.1L5 22l4.2-1.4C10.4 21 11.2 21 12 21c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+      LINEで相談してみる
+    </a>
   </div>
 </section>
 
