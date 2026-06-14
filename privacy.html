@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー | Studio Liko</title>
+  <meta name="description" content="Studio Likoのプライバシーポリシー。個人情報の取り扱い・利用目的・第三者提供・お問い合わせ先について。">
+  <link rel="canonical" href="https://yogakuma.github.io/studio-liko-03-wall/privacy.html">
+  <meta name="robots" content="index,follow">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="プライバシーポリシー | Studio Liko">
+  <meta property="og:description" content="Studio Likoの個人情報取扱いに関する方針。">
+  <meta property="og:url" content="https://yogakuma.github.io/studio-liko-03-wall/privacy.html">
+  <meta property="og:site_name" content="Studio Liko">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fbf8f1'/%3E%3Ctext x='32' y='44' font-family='Cormorant Garamond, Georgia, serif' font-size='42' font-style='italic' font-weight='500' fill='%236b8f71' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --olive:      #6b8f71;
+      --olive-dark: #4a6b50;
+      --olive-tint: #eef4ee;
+      --paper:      #fbf8f1;
+      --paper-2:    #f4efe2;
+      --ink:        #1f1d18;
+      --ink-soft:   #4a4641;
+      --ink-mute:   #8a857c;
+      --line:       #e5dfd0;
+      --serif:  "Shippori Mincho", "Hiragino Mincho ProN", serif;
+      --sans:   "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+      --italic: "Cormorant Garamond", serif;
+      --mono:   "JetBrains Mono", ui-monospace, monospace;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.95; overflow-x: hidden; }
+    a { color: var(--olive-dark); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { opacity: .75; }
+
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(251,248,241,.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+    .header-inner { max-width: 1080px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: var(--italic); font-style: italic; font-weight: 500; font-size: 1.3rem; line-height: 1.1; }
+    .logo small { display: block; font-family: var(--mono); font-style: normal; font-size: .56rem; letter-spacing: .2em; color: var(--ink-mute); margin-top: 3px; }
+    .back-link { font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; transition: background .2s; }
+    .back-link:hover { background: var(--olive-tint); }
+
+    main { max-width: 760px; margin: 0 auto; padding: 140px 24px 96px; }
+    .eyebrow { font-family: var(--mono); font-size: .6rem; letter-spacing: .3em; color: var(--olive); text-transform: uppercase; margin-bottom: 14px; }
+    h1 { font-family: var(--serif); font-size: clamp(1.6rem, 3.6vw, 2.1rem); font-weight: 500; line-height: 1.6; letter-spacing: .04em; margin-bottom: 12px; }
+    .rule-line { width: 32px; height: 1px; background: var(--olive); margin: 0 0 40px; }
+
+    .intro { font-size: .95rem; color: var(--ink-soft); margin-bottom: 56px; }
+
+    h2 { font-family: var(--serif); font-size: 1.18rem; font-weight: 500; line-height: 1.6; letter-spacing: .04em; margin-top: 44px; margin-bottom: 16px; padding-left: 14px; border-left: 3px solid var(--olive); }
+    h2:first-of-type { margin-top: 0; }
+    p { font-size: .92rem; color: var(--ink-soft); margin-bottom: 16px; }
+    ul { padding-left: 1.4em; margin-bottom: 20px; }
+    li { font-size: .92rem; color: var(--ink-soft); margin-bottom: 8px; }
+
+    .meta-box { margin-top: 64px; padding: 24px 28px; background: var(--paper-2); border-radius: 8px; border: 1px solid var(--line); }
+    .meta-box dt { font-family: var(--mono); font-size: .6rem; letter-spacing: .18em; color: var(--ink-mute); margin-bottom: 4px; }
+    .meta-box dd { font-size: .9rem; color: var(--ink-soft); margin-bottom: 18px; }
+    .meta-box dd:last-child { margin-bottom: 0; }
+
+    footer { background: var(--olive-dark); color: var(--paper); padding: 36px 22px 28px; text-align: center; }
+    .footer-logo { font-family: var(--italic); font-style: italic; font-size: 1.4rem; margin-bottom: 12px; }
+    .footer-logo small { display: block; font-family: var(--mono); font-style: normal; font-size: .56rem; letter-spacing: .2em; opacity: .55; margin-top: 4px; }
+    .footer-meta { font-family: var(--mono); font-size: .58rem; letter-spacing: .14em; opacity: .55; margin-top: 14px; }
+
+    @media (max-width: 768px) {
+      main { padding: 110px 20px 72px; }
+      h1 { font-size: 1.4rem; }
+      h2 { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      Studio Liko
+      <small>YOGA · BABY SIGN · MEINOHAMA</small>
+    </a>
+    <a href="index.html" class="back-link">← トップへ戻る</a>
+  </div>
+</header>
+
+<main>
+  <p class="eyebrow">Privacy Policy</p>
+  <h1>プライバシーポリシー</h1>
+  <div class="rule-line"></div>
+
+  <p class="intro">Studio Liko（以下「当スタジオ」）は、お客さまの個人情報を適切に取り扱うため、本ポリシーを定めます。レッスンやお問い合わせを通じてお預かりした情報を、信頼関係のもとで大切に扱います。</p>
+
+  <h2>1. 取得する個人情報</h2>
+  <p>当スタジオは、レッスンのお申込み・お問い合わせ・体験予約などの場面で、以下の情報を取得することがあります。</p>
+  <ul>
+    <li>お名前・お子さまのお名前</li>
+    <li>連絡先（電話番号・メールアドレス・LINE ID 等）</li>
+    <li>ご住所（必要な場合のみ）</li>
+    <li>お子さまの月齢・体調などレッスン進行に必要な範囲の情報</li>
+    <li>その他、お問い合わせに付随してお伝えいただく情報</li>
+  </ul>
+
+  <h2>2. 利用目的</h2>
+  <p>取得した個人情報は、以下の目的のために利用します。</p>
+  <ul>
+    <li>レッスン・体験予約の受付・確認・ご案内</li>
+    <li>お問い合わせへのご返信</li>
+    <li>レッスン運営に必要な連絡（変更・休講・振替等のご案内）</li>
+    <li>スタジオからの大切なお知らせのご連絡</li>
+    <li>サービスの品質向上のための統計分析（個人を特定しない形での集計）</li>
+  </ul>
+
+  <h2>3. 第三者への提供</h2>
+  <p>お客さまの個人情報を、ご本人の同意なく第三者に開示・提供することはありません。ただし、以下の場合を除きます。</p>
+  <ul>
+    <li>法令に基づく場合</li>
+    <li>人の生命・身体・財産の保護のために必要であって、ご本人の同意を得ることが困難な場合</li>
+    <li>業務委託先に、利用目的の範囲内で必要な情報を提供する場合（守秘義務を負った委託先に限ります）</li>
+  </ul>
+
+  <h2>4. 個人情報の管理</h2>
+  <p>取得した個人情報は、紛失・漏えい・改ざんが起こらないよう、適切な安全管理のもとで保管します。保管の必要がなくなった情報は、速やかに削除します。</p>
+
+  <h2>5. 開示・訂正・削除のご請求</h2>
+  <p>ご本人から個人情報の開示・訂正・削除をご希望の場合は、本ページ末尾の連絡先までお問い合わせください。ご本人であることを確認のうえ、速やかに対応します。</p>
+
+  <h2>6. アクセス解析ツールの利用</h2>
+  <p>当ウェブサイトでは、サイトの利用状況を把握するためにアクセス解析ツールを利用することがあります。これらのツールはCookieを使用しますが、個人を特定する情報を含みません。Cookieの受け入れはブラウザの設定で拒否することができます。</p>
+
+  <h2>7. 本ポリシーの変更</h2>
+  <p>本ポリシーの内容は、必要に応じて変更することがあります。重要な変更がある場合は、本ページ上でお知らせします。</p>
+
+  <h2>8. お問い合わせ窓口</h2>
+  <p>個人情報の取り扱いに関するお問い合わせは、LINEまたは下記の住所までお願いいたします。</p>
+
+  <dl class="meta-box">
+    <dt>運営者</dt>
+    <dd>Studio Liko（スタジオ リコ）</dd>
+    <dt>所在地</dt>
+    <dd>福岡県福岡市西区愛宕南2丁目12-12（姪浜エリア）</dd>
+    <dt>お問い合わせ</dt>
+    <dd><a href="https://page.line.me/ttp2821f" target="_blank" rel="noopener">LINEで連絡する</a></dd>
+    <dt>制定日</dt>
+    <dd>2026年6月14日</dd>
+  </dl>
+</main>
+
+<footer>
+  <div class="footer-logo">
+    Studio Liko
+    <small>MEINOHAMA · FUKUOKA</small>
+  </div>
+  <p class="footer-meta">© 2024 STUDIO LIKO</p>
+</footer>
+
+</body>
+</html>
