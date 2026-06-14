@@ -359,6 +359,9 @@
     .schedule-btn.bs   { border: 1.5px solid var(--bs-deep); color: var(--bs-deep); }
     .schedule-btn:hover { background: rgba(0,0,0,.03); }
     .schedule-btn-arrow { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; opacity: .7; }
+    .schedule-btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; pointer-events: none; }
+    .schedule-btn-soon { display: inline-block; margin-left: 10px; padding: 2px 8px; border-radius: 999px; background: var(--paper-2); color: var(--ink-mute); font-family: var(--mono); font-size: .58rem; letter-spacing: .12em; }
+    .schedule-note { margin-top: 14px; font-size: .78rem; color: var(--ink-mute); line-height: 1.7; }
 
     /* ── インストラクター ── */
     .instructor-card { text-align: center; }
@@ -851,15 +854,17 @@
   <div class="container">
     <p class="eyebrow">SCHEDULE</p>
     <div class="schedule-btns">
-      <a href="https://drive.google.com/YOUR_YOGA_FILE_ID" class="schedule-btn yoga" target="_blank" rel="noopener">
-        <span>ヨガのスケジュールを見る</span>
+      <!-- ▼ 公開時に href を Googleドライブの共有URL（リンクを知っている全員に閲覧権限） に差し替え／aria-disabled とソンバッジを削除する -->
+      <a href="#" class="schedule-btn yoga" aria-disabled="true" tabindex="-1">
+        <span>ヨガのスケジュールを見る<span class="schedule-btn-soon">準備中</span></span>
         <span class="schedule-btn-arrow">↓</span>
       </a>
-      <a href="https://drive.google.com/YOUR_BS_FILE_ID" class="schedule-btn bs" target="_blank" rel="noopener">
-        <span>ベビーサインのスケジュールを見る</span>
+      <a href="#" class="schedule-btn bs" aria-disabled="true" tabindex="-1">
+        <span>ベビーサインのスケジュールを見る<span class="schedule-btn-soon">準備中</span></span>
         <span class="schedule-btn-arrow">↓</span>
       </a>
     </div>
+    <p class="schedule-note">※ スケジュールはPDFで公開予定です。最新版の準備が整い次第、ボタンからご覧いただけます。</p>
   </div>
 </section>
 
