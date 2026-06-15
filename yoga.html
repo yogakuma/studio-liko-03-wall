@@ -322,6 +322,7 @@
     .step-cta-btn:hover { background: var(--olive); color: var(--paper); }
     /* 入会金 */
     .pr-enroll { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin-bottom: 28px; }
+    @media (max-width: 560px) { .pr-enroll { flex-direction: column; align-items: flex-start; gap: 12px; } .pr-enroll-notes { width: 100%; } }
     .pr-enroll-left { flex-shrink: 0; }
     .pr-enroll-tag { font-family: var(--mono); font-size: .56rem; letter-spacing: .18em; color: var(--olive-dark); margin-bottom: 4px; }
     .pr-enroll-price { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--olive-dark); }
@@ -744,7 +745,7 @@
         <p class="pr-eyebrow">01 — Monthly Plan</p>
         <h3 class="pr-section-title">お月謝制</h3>
       </div>
-      <p class="pr-section-note">お月謝制は、無理なく習慣として続けたい方向けのプランです。体の変化をゆっくり感じていただくため、5ヶ月以上の継続を目安にご案内しています。</p>
+      <p class="pr-section-note">お月謝制は、無理なく習慣として続けたい方向けのプランです。</p>
       <div class="pr-plan-stack">
         <div class="pr-plan-wide">
           <div class="pr-plan-wide-top">
@@ -780,7 +781,8 @@
         </div>
       </div>
       <p class="pr-small-note">
-        ※ 月4回プランの方は、追加参加の場合は1回1,000円（お昼のレッスンに限ります）。
+        ※ 月4回プランの方は、追加参加の場合は1回1,000円（お昼のレッスンに限ります）。<br>
+        ※ 体の変化をゆっくり感じていただくため、5ヶ月以上の継続を目安にご案内しています。
       </p>
     </div>
 

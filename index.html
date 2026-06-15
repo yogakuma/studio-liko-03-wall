@@ -119,8 +119,8 @@
       position: relative; z-index: 2;
       height: 100%;
       display: flex; flex-direction: column;
-      justify-content: center;
-      padding: 100px 28px 220px;
+      justify-content: flex-start;
+      padding: 110px 28px 220px;
       color: var(--paper);
     }
     .fv-tagline {
@@ -494,8 +494,15 @@
     .footer-meta {
       margin-top: 20px; padding-top: 16px;
       border-top: 1px solid rgba(251,248,241,.15);
-      display: flex; justify-content: space-between;
+      display: flex; justify-content: space-between; align-items: center;
       font-family: var(--mono); font-size: .58rem; letter-spacing: .15em; opacity: .55;
+      line-height: 1.9;
+    }
+    .footer-meta-links { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+    .footer-meta-links a { white-space: nowrap; }
+    @media (max-width: 768px) {
+      .footer-meta { flex-direction: column; align-items: flex-start; gap: 12px; letter-spacing: .12em; }
+      .footer-meta-links { gap: 6px 16px; }
     }
 
     /* ── スマホ固定CTA ── */
@@ -532,7 +539,7 @@
       .btn-nav { display: inline-block; margin: 16px 0 0; }
       body { padding-bottom: 72px; }
       .sticky-cta { display: flex; gap: 10px; }
-      .fv-content { padding: 80px 22px 210px; }
+      .fv-content { padding: 90px 22px 210px; justify-content: flex-start; }
       .fv-cards-wrap { padding: 0 10px; }
       .welcome-section { padding-top: 90px; }
       .lessons-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1054,17 +1061,13 @@
   </p>
   <div class="footer-meta">
     <span>© 2024 STUDIO LIKO</span>
-    <span>
-      <a href="https://www.instagram.com/studio_liko_/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Instagram @studio_liko_</a>
-      　·
-      <a href="https://ameblo.jp/rikoppe/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Blog @rikoppe</a>
-      　·
+    <div class="footer-meta-links">
+      <a href="https://www.instagram.com/studio_liko_/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Instagram</a>
+      <a href="https://ameblo.jp/rikoppe/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Blog</a>
       <a href="https://page.line.me/ttp2821f" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">LINE</a>
-      　·
       <a href="voices.html" style="color:inherit;text-decoration:none;">通われた方の声</a>
-      　·
       <a href="privacy.html" style="color:inherit;text-decoration:none;">プライバシーポリシー</a>
-    </span>
+    </div>
   </div>
 </footer>
 
